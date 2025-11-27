@@ -1,0 +1,25 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Anna Pirogova — Data Scientist & Health Economist"
+  navbar:
+    left:
+      - text: About me
+        href: index.qmd
+      - text: Portfolio
+        href: portfolio.qmd
+      - text: Research
+        href: research_academic_work.qmd
+  page-footer: 
+    center: "© 2025 Anna Pirogova"
+
+format:
+  html:
+    theme: cosmo
+    mainfont: "Lato"
+    monofont: "JetBrains Mono"
+    include-in-header: _includes/head.html
+    css: styles.css
+    toc: true
