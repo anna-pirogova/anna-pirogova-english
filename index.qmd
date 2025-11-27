@@ -1,41 +1,43 @@
 ---
-title: "Анна Пирогова"
+title: "Anna Pirogova"
 about:
-  template: broadside
+  template: solana
   image: profile.jpg
+  
   links:
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://github.com/anna-pirogova
+      
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/anna-pirogova/
 ---
+I've been working with data for over 4 years: analyzing, visualizing, and helping businesses make data-driven decisions. I use Python, R, and SQL as my primary tools.
 
-Уже более 4 лет работаю с данными: анализирую, визуализирую, помогаю бизнесу принимать обоснованные решения. Использую Python, R и SQL как основные инструменты.
+### Education
+**Istanbul Technical University (ITÜ)**| Türkiye | QS 326<br>
+Master's in Economics | 2023–2025 | GPA: 3.75/4.0
 
-## Образование
+**Boğaziçi University (Bogaziçi)**| Türkiye | QS 371<br>
+Exchange in Business Administration | 2022–2023 | GPA: 3.42/4.0<br>
 
-**Стабульский Технический Университет (ITÜ)**| Турция | QS 326<br>
-Магистратура по экономике | 2023–2025 | GPA: 3.75/4.0
+**HSE University, St. Petersburg**| Russia<br>
+Bachelor's in International Business and Management | 2019–2023 | GPA 8.86/10<br>
+Minor: Data Science | 2019-2022<br>
+Diploma with honors | Average GPA: 8.86/10
 
-**Босфорский Университет (Bogaziçi)**| Турция  | QS 371<br>
-Обмен по направлению «Бизнес-администрирование» | 2022–2023 | GPA: 3.42/4.0<br>
+### Work Experience
+**PASV (EdTech startup, California, USA / remote)**<br>
+Data & CRM Analytics Specialist | May 2021 – present
 
-**НИУ ВШЭ, Санкт-Петербург**| Россия<br>  
-Бакалавриат: Международный бизнес и менеджмент | 2019–2023 | GPA 8.86/10<br>
-Minor-специализация: Data Science | 2019-2022<br>
-Диплом с отличием | Средний балл: 8.86 / 10  
+**HSE University**, St. Petersburg, Russia<br>
+Teaching Assistant | September 2020 – June 2021
 
+### Key Tools
+Python & R · SQL · Power BI · Streamlit · Pandas · CRM (Zoho) · Docker · Git
 
-## Опыт работы
+[Go to portfolio](portfolio.qmd)<br>
+[Download full CV](portfolio.qmd)<br>
+Contact me:![Contact](images/contact_info.png){width=400px}
 
-**PASV (EdTech стартап,Калифорния, США / удалённо)**  
-Бизнес-аналитик, менеджер процессов | Май 2021 – наст. время  
-
-**НИУ ВШЭ**, Санкт-Петербург, Россия  
-Ассистент преподавателя | Сентябрь 2020 – Июнь 2021  
-
-## Ключевые инструменты
-
-Python & R · SQL · Power BI · Streamlit · pandas · CRM (Zoho) · Docker · Git
-
-
-[Перейти к портфолио](portfolio.qmd)

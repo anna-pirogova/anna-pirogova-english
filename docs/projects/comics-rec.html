@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Система рекомендаций комиксов – Anna Pirogova — Data Scientist &amp; Health Economist</title>
+<title>Comic book recommendation system – Anna Pirogova — Data Scientist &amp; Health Economist</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -92,15 +92,19 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Обо мне</span></a>
+<span class="menu-text">About me</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../portfolio.html"> 
-<span class="menu-text">Портфолио</span></a>
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../research_academic_work.html"> 
-<span class="menu-text">Исследования</span></a>
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../contact.html"> 
+<span class="menu-text">Contact</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -118,10 +122,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#обзор-проекта" id="toc-обзор-проекта" class="nav-link active" data-scroll-target="#обзор-проекта">Обзор проекта</a></li>
-  <li><a href="#методы-и-особенности" id="toc-методы-и-особенности" class="nav-link" data-scroll-target="#методы-и-особенности">Методы и особенности</a></li>
-  <li><a href="#ключевые-особенности" id="toc-ключевые-особенности" class="nav-link" data-scroll-target="#ключевые-особенности">Ключевые особенности</a></li>
-  <li><a href="#выводы" id="toc-выводы" class="nav-link" data-scroll-target="#выводы">Выводы</a></li>
+  <li><a href="#project-summary" id="toc-project-summary" class="nav-link active" data-scroll-target="#project-summary">Project summary</a></li>
+  <li><a href="#methods-and-features" id="toc-methods-and-features" class="nav-link" data-scroll-target="#methods-and-features">Methods and Features</a></li>
+  <li><a href="#key-features" id="toc-key-features" class="nav-link" data-scroll-target="#key-features">Key Features</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
   </ul>
 </nav>
     </div>
@@ -130,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Система рекомендаций комиксов</h1>
+<h1 class="title">Comic book recommendation system</h1>
 </div>
 
 
@@ -147,40 +151,39 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="обзор-проекта" class="level2">
-<h2 class="anchored" data-anchor-id="обзор-проекта">Обзор проекта</h2>
+<section id="project-summary" class="level2">
+<h2 class="anchored" data-anchor-id="project-summary">Project summary</h2>
 <p><img src="../images/comics-thumb.png" class="img-fluid"></p>
-<p>В данном проекте использовались данные с сайта Good Reads, оценки пользователей, выставленные для комиксов, а также характеристики комиксов.</p>
-<p>Система рекомендаций комиксов основана на двух подходах: <strong>коллаборативная фильтрация</strong> и <strong>content-based рекомендации</strong>. В рамках проекта был проведена <strong>предобработка данных</strong>, <strong>сентимент-анализ описаний</strong>, а также использование <strong>сетевого анализа</strong>.</p>
-<p><a href="../reports/comics-report.html">Посмотреть полный отчёт с кодом, графиками и анализом</a></p>
+<p>This project used data from the Good Reads website, user ratings for comics, and comic characteristics.</p>
+<p>The comic recommendation system is based on two approaches: <strong>collaborative filtering</strong> and <strong>content-based recommendations</strong>. The project included <strong>data preprocessing</strong>, <strong>sentiment analysis of descriptions</strong>, and <strong>network analysis</strong>.</p>
+<p><a href="../reports/comics-report.html">View the full report with code, graphs, and analysis</a></p>
 <hr>
 </section>
-<section id="методы-и-особенности" class="level2">
-<h2 class="anchored" data-anchor-id="методы-и-особенности">Методы и особенности</h2>
+<section id="methods-and-features" class="level2">
+<h2 class="anchored" data-anchor-id="methods-and-features">Methods and Features</h2>
 <ul>
-<li><strong>Коллаборативная фильтрация (UBCF)</strong>: на основе матрицы user-item и оценки RMSE.</li>
-<li><strong>Content-based рекомендации</strong>: использовались признаки, такие как издательство, жанры (полки), средний сентимент.</li>
-<li><strong>Сетевой анализ</strong>: визуализация связей между комиксами (от него впоследствии отказались как от нерелевантного для рекомендаций).</li>
-<li><strong>Оценка результатов</strong>: как через RMSE/MAE, так и вручную (через тестовых пользователей), проверялась адекватности рекомендаций (путем сравнения характеристик понравившихся и рекомендованных пользователю комиксов)</li>
+<li><strong>Collaborative Filtering (UBCF)</strong>: based on the user-item matrix and RMSE score.</li>
+<li>Content-based Recommendations: used features such as publisher, genres (shelves), and average sentiment.</li>
+<li><strong>Network Analysis</strong>: visualization of relationships between comics (later abandoned as irrelevant for recommendations).</li>
+<li><strong>Results evaluation</strong>: both RMSE/MAE and manual (using test users) validation of recommendations was performed (by comparing the characteristics of comics liked and recommended to the user).</li>
 </ul>
 <hr>
 </section>
-<section id="ключевые-особенности" class="level2">
-<h2 class="anchored" data-anchor-id="ключевые-особенности">Ключевые особенности</h2>
+<section id="key-features" class="level2">
+<h2 class="anchored" data-anchor-id="key-features">Key Features</h2>
 <ul>
-<li>Предобработка: добавление тестовых пользователей и оценок, чистка данных</li>
-<li>Сентимент-анализ: описание разбивалось на слова, считался средний сентимент по каждому комиксу</li>
-<li>Content-based: строилась матрица схожести между комиксами по выбранным признакам</li>
+<li>Preprocessing: adding test users and ratings, cleaning the data</li>
+<li>Sentiment analysis: descriptions were broken down into words, and the average sentiment for each comic was calculated</li>
+<li>Content-based: a similarity matrix between comics was constructed based on the selected features</li>
 </ul>
 <hr>
 </section>
-<section id="выводы" class="level2">
-<h2 class="anchored" data-anchor-id="выводы">Выводы</h2>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
 <ul>
-<li>Результаты сетевого анализа показали, что он не имеет ничего полезного для рекомендации, поэтому решено было его не использовать.</li>
-<li>Формальная оценка коллаборативной фильтрации показала, что модель, построенная методом UBCF работает лучше, чем IBCF, поскольку имеет более низкие значения RMSE,MSE и MAE. Следовательно, для создания функции мы использовали ее.</li>
-<li>Сравнивая характеристики (проверка на адекватность) комиксов, которые понравились пользователю и которые были рекомендованы content-based, мы пришли к выводу, что content-based система работает хорошо.</li>
-<li>Основываясь на внутренней пользовательской оценке система content-based лучше справилась с рекомендациями, чем коллаборативная фильтрация: названия издательств и пользовательских полок были такие же, как и в тех, которым пользователь поставил высокую оценку.</li>
+<li>The results of the network analysis showed that it was not useful for recommendation, so it was decided not to use it.</li>
+<li>A formal evaluation of collaborative filtering showed that the model built using the UBCF method performed better than the IBCF, as it had lower RMSE, MSE, and MAE values. Therefore, we used it to create the function. - By comparing the characteristics (validation) of comics that users liked and those recommended by the content-based system, we concluded that the content-based system worked well.</li>
+<li>Based on internal user ratings, the content-based system performed better in recommending comics than the collaborative filtering: the publisher names and user-generated shelves were the same as those that the user rated highly.</li>
 </ul>
 
 

@@ -1,148 +1,145 @@
 ---
-title: "Анализ данных по проектам Kickstarter"
+title: "Kickstarter Project Data Analysis"
 format: html
 ---
 
-
-# 1. Обзор проекта
+# 1. Project Overview
 
 <img src="/images/kickstarter-thumb.png" width="50%">
 
+The goal of the project is to investigate the factors influencing the success of projects hosted on the Kickstarter platform. The focus is on categorical variables, launch time, and project name characteristics. A classification decision tree model was constructed using the rpart() function, which predicts project success.
 
-Цель проекта — исследовать факторы, влияющие на успешность проектов, размещённых на платформе Kickstarter. Основное внимание уделяется категориальным переменным, времени запуска и характеристикам названия проекта. Построена модель классификационного дерева решений (decision tree), с помощью функции rpart(), которая предсказывает успех проекта.
+[View full report with graphs and analysis](../reports/kickstarter-report.html)
 
+[View dashboard](../reports/kickstarter-dashboard.html)
 
-[Посмотреть полный отчёт с графиками и анализом](../reports/kickstarter-report.html)
+[View code](../reports/kickstarter-code.qmd)
 
-[Посмотреть дашборд](../reports/kickstarter-dashboard.html)
+# 2. Data Preprocessing
 
-[Посмотреть код](../reports/kickstarter-code.qmd)
+The following steps were performed as part of data preparation:
 
-# 2. Предобработка данных
+- Converting string variables to factors for statistical tests.
+- Converting the launch date (`launched`) to Date format.
+- Creating new features:
+- Based on launch date: month, day, season, day of the week, launch hour, part of the day, campaign duration;
+- Based on categories: combined variable `gen_category`, string lengths, word count, first letters, and name matches;
+- Based on project name: name length, word count, presence of CAPS and special characters.
 
-В рамках подготовки данных были реализованы следующие шаги:
+# 3. Exploratory Analysis
 
-- Преобразование строковых переменных в факторы для проведения статистических тестов.
-- Преобразование даты запуска (`launched`) в формат Date.
-- Создание новых признаков:
-  - на основе даты запуска: месяц, день, сезон, день недели, час запуска, часть дня, длительность кампании;
-  - на основе категорий: комбинированная переменная `gen_category`, длины строк, количество слов, первые буквы и совпадения названий;
-  - на основе названия проекта: длина названия, количество слов, наличие КАПСА и специальных символов.
+## 3.1 Most Expensive Successful Projects by Category
 
-# 3. Разведочный анализ
-
-## 3.1 Самые дорогие успешные проекты по категориям
-
-Наибольшая средняя сумма собрана в категориях:
+The highest average revenue was collected in the following categories:
 - **Technology**
 - **Design**
 - **Food**
 
-## 3.2 Процент успешных проектов по категориям
+## 3.2 Percentage of Successful Projects by Category
 
-Самые успешные категории:
+Most Successful Categories:
 - **Comics**
 - **Dance**
 - **Theater**
 - **Games**
 - **Music**
 
-Интересно, что самые дорогие категории (например, Technology) показывают самый низкий процент успеха (~25%).
+Interestingly, the most expensive categories (e.g., Technology) show the lowest success rate (~25%).
 
-## 3.3 Подкатегории (gen_category)
+## 3.3 Subcategories (gen_category)
 
-Анализ по подкатегориям выявил:
-- Более высокие суммы сбора в специфичных подкатегориях (например, *Movie Theaters*, *Camera Equipment*).
-- Более точное понимание успешности — например, *Video Games* понижают средний успех в категории *Games*, тогда как *Tabletop Games* — повышают.
+Analysis by subcategory revealed:
+- Higher revenue in specific subcategories (e.g., *Movie Theaters*, *Camera Equipment*).
+- A more precise understanding of success—for example, *Video Games* lower the average success in the *Games* category, while *Tabletop Games* increase it.
 
-## 3.4 Статистические тесты
+## 3.4 Statistical Tests
 
-Проведён тест независимости между успешностью и:
+A test of independence was conducted between success and:
 - `category`
 - `main_category`
 - `gen_category`
 
-Во всех случаях **p-value < 0.05**, гипотеза о значимости различий подтверждена.
+In all cases, **p-value < 0.05**, the hypothesis of significant differences is confirmed.
 
-# 4. Влияние даты и времени запуска
+# 4. The Impact of Launch Date and Time
 
-### 4.1 Месяц и день
+### 4.1 Month and Day
 
-Тесты показывают статистически значимые, но практически **незначительные различия**.
+Tests show statistically significant, but practically **insignificant**, differences.
 
-### 4.2 Сезон и день недели
+### 4.2 Season and Day of the Week
 
-- Лёгкий рост успешности осенью.
-- Наибольшая успешность у проектов, запущенных **вторник–среда**.
+- A slight increase in success in the fall.
+- Projects launched **Tuesday–Wednesday** have the greatest success.
 
-### 4.3 Время суток
+### 4.3 Time of Day
 
-Проекты, запущенные **во второй половине дня (12:00–18:00)**, демонстрируют лучший результат.
+Projects launched in the afternoon (12:00–18:00) demonstrate better results.
 
-### 4.4 Длительность кампании
+### 4.4 Campaign Duration
 
-- Проекты с длительностью **более 30 дней** — менее успешны.
-- **Успешные проекты в среднем короче**, чем неуспешные.
+- Projects lasting more than 30 days are less successful.
+- Successful projects are, on average, shorter than unsuccessful ones.
 
-# 5. Название проекта как источник признаков
+# 5. Project Title as a Source of Indicators
 
-Анализ показал, что успешные проекты чаще имеют:
-- Более **длинные названия**
-- **Больше слов**
-- **КАПС** в отдельных словах
-- Спецсимволы (":", "!", ";")
+The analysis showed that successful projects more often have:
+- Longer titles
+- More words
+- All caps in certain words
+- Special characters (":", "!", ";")
 
-Все переменные подтвердили свою **значимость статистическими тестами**.
+All variables were confirmed to be significant by statistical tests.
 
-# 6. Построение модели
+# 6. Model Construction
 
-## 6.1 Сложная модель (rpart, без отбора признаков)
+## 6.1 Complex Model (rpart, without feature selection)
 
-- Accuracy на тренировочной выборке: **0.70**
-- Accuracy на тестовой выборке: **0.68**
-- Применено обрезание дерева по оптимальному `cp` — точность практически не изменилась.
+- Accuracy on training set: **0.70**
+- Accuracy on test set: **0.68**
+- Tree pruning based on optimal `cp` was applied – accuracy remained virtually unchanged.
 
-Наиболее важные переменные:
+The most important variables are:
 - `category`, `gen_category`, `main_category`
 - `cat_first_letter`, `gen_cat_first_letter`
 - `usd_goal_real`, `period_length`, `name_length`
 - `launch_dayPart`, `currency`, `country`, `launch_hour`
 
-## 6.2 Упрощённая модель
+## 6.2 Simplified Model
 
-Построена модель с меньшим числом признаков на основе важности переменных из модели 1:
+A model with a smaller number of features was built based on the variable importance from Model 1:
 
-- Accuracy на тренировочной выборке: **0.675**
-- Accuracy на тестовой выборке: **0.669**
+- Accuracy on the training set: **0.675**
+- Accuracy on the testing set: **0.669**
 
-**Снижение точности незначительно**, зато модель проще и легче интерпретируема.
+**The decrease in accuracy is minor**, but the model is simpler and easier to interpret.
 
-## 6.3 Интерпретация групп
+## 6.3 Interpretation of Groups
 
-Упрощённая модель выделяет 7 групп проектов с разными вероятностями успеха:
+The simplified model identifies seven groups of projects with different probabilities of success:
 
-1. Неблагоприятные подкатегории → неуспешен  
-2. Благоприятные подкатегории → успешен  
-3. Высокая цель (>31 000 USD) → неуспешен  
-4. Длинная кампания (>56 дней) → неуспешен  
-5. Малая цель (<1418 USD) → успешен  
-6. Запуск вечером/ночью → неуспешен  
-7. Запуск днём + умеренная цель → успешен
+1. Unfavorable subcategories → unsuccessful
+2. Favorable subcategories → successful
+3. High goal (>$31,000) → unsuccessful
+4. Long campaign (>56 days) → unsuccessful
+5. Low goal (<$1,418) → successful
+6. Evening/night launch → unsuccessful
+7. Daytime launch + moderate goal → successful
 
-# 7. Проверенные гипотезы
+# 7. Tested hypotheses
 
-Во всех случаях гипотезы **о статистически значимых различиях** между успешностью и переменными (категории, даты, названия, длительность и т.д.) **подтвердились** (p-value < 0.05).
+In all cases, the hypotheses **regarding statistically significant differences** between success and variables (categories, dates, titles, duration, etc.) **were confirmed** (p-value < 0.05).
 
-# 8. Общие выводы
+# 8. General Conclusions
 
-- Категориальные признаки (особенно `gen_category`) — мощные предикторы успешности.
-- Название проекта и особенности запуска (время, длительность) тоже влияют.
-- Простая модель может эффективно предсказывать успешность с разумной точностью.
-- Разведочный анализ позволил обосновать выбор переменных для модели.
+- Categorical features (especially `gen_category`) are powerful predictors of success.
+- The project name and launch characteristics (time, duration) also have an impact.
+- A simple model can effectively predict success with reasonable accuracy.
+- Exploratory analysis allowed us to justify the choice of variables for the model.
 
-# 9. Рекомендации
+# 9. Recommendations
 
-- При запуске проекта стоит учитывать: **подкатегорию**, **время суток**, **оптимальную длительность** кампании.
-- Название проекта должно быть **информативным, длинным, возможно с выделениями (КАПС, знаки)**.
-- Подбор правильной подкатегории имеет **ключевое значение** для успеха.
+- When launching a project, consider the following: **subcategory**, **time of day**, **optimal campaign duration**.
+- The project name should be **informative, long, and possibly with bolding (CAPS, symbols)**.
+- Selecting the right subcategory is **key** to success..
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Исследования – Anna Pirogova — Data Scientist &amp; Health Economist</title>
+<title>Research – Anna Pirogova — Data Scientist &amp; Health Economist</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -92,15 +92,19 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Обо мне</span></a>
+<span class="menu-text">About me</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./portfolio.html"> 
-<span class="menu-text">Портфолио</span></a>
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./research_academic_work.html" aria-current="page"> 
-<span class="menu-text">Исследования</span></a>
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./contact.html"> 
+<span class="menu-text">Contact</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -129,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Исследования</h1>
+<h1 class="title">Research</h1>
 </div>
 
 
@@ -172,26 +176,6 @@ Abstract (EN)
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Абстракт (RU)">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Абстракт (RU)
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>В данной магистерской диссертации рассматривается влияние расходов на лечебное и профилактическое здравоохранение на экономические показатели стран — членов Организации экономического сотрудничества и развития (ОЭСР) за период с 1998 по 2021 год. Существующая литература в целом подтверждает положительное влияние расходов на здравоохранение на рост валового внутреннего продукта (ВВП), что согласуется с теорией человеческого капитала. Однако немногие исследования дифференцируют типы инвестиций в здравоохранение, такие как лечебные (лечение заболеваний) и профилактические (предотвращение заболеваний). Мы считаем, что оптимизация этих расходов особенно важна в условиях необходимости политического выбора. Цель данной работы — оценить причинно-следственное влияние расходов на лечение и профилактику, а также исследовать взаимодействие с инвестициями в образование и различия в зависимости от уровня дохода. Кроме того, мы ставим задачу применить инновационный метод двойного машинного обучения (Double Machine Learning, DML) в области, где он пока используется редко.</p>
-<p>Для анализа был собран сбалансированный панельный набор данных по 29 странам ОЭСР за 1998–2021 годы, основанный на статистике здравоохранения ОЭСР и данных Всемирного банка. Методология включает два основных подхода: традиционные модели с фиксированными эффектами (Fixed Effects, FE) с фиктивными переменными по годам и странам, а также подход DML с использованием высокоразмерных предикторов и пяти методов машинного обучения (Lasso, Ridge, Elastic Net, Random Forest и XGBoost). Основные переменные интереса — доля расходов на лечение и профилактику в процентах от ВВП. Контрольные переменные включают демографические показатели (например, ожидаемая продолжительность жизни, доля пожилого населения) и экономические переменные (например, уровень сбережений, открытость торговли, краткосрочная процентная ставка).</p>
-<p>Результаты моделей с фиксированными эффектами показывают, что расходы на лечение могут иметь нелинейную U-образную зависимость от уровня дохода. Точка перегиба составляет 2.87% от ВВП — при превышении этого порога лечение начинает оказывать положительное влияние на экономическое развитие. Этот результат сохраняется как для моделей с текущими, так и с лагированными значениями. В отношении профилактических расходов выявить значимого влияния на логарифм ВВП на душу населения не удалось. Также регрессии, основанные на уровне дохода, показали, что положительный эффект от расходов на лечение становится значимым только для стран с высоким уровнем дохода, но не для стран с низким доходом. Кроме того, было установлено, что более высокие расходы на образование усиливают положительное влияние лечебных расходов на экономическое развитие.</p>
-<p>Оценки, полученные с помощью DML, также дают интересные результаты. Для лечебных расходов DML-модели подтверждают выпуклую зависимость. В отличие от моделей FE, некоторые DML-модели выявили обратно U-образную (inverted U-shaped) зависимость между профилактическими расходами и ВВП, хотя для лагированных значений модели дают противоречивые результаты.</p>
-<p>На основе этих выводов можно сформулировать важные рекомендации для политики. Во-первых, инвестиции в лечение могут повышать уровень дохода, но только при условии превышения минимального порога, а также при наличии инвестиций в образование. Во-вторых, странам следует сначала инвестировать в образование, а затем увеличивать расходы на лечение. В-третьих, необходимо улучшить систему учета и классификации профилактических расходов, чтобы можно было более точно оценивать их влияние на экономику. Наши результаты по DML позволяют предположить, что текущие данные занижают эффективность профилактики. Для стран с высоким уровнем дохода имеет смысл рассматривать более высокий порог расходов на лечение как условие их эффективности для экономического роста. В целом, данная работа демонстрирует необходимость использования новых подходов для получения новых знаний в экономике здравоохранения.</p>
-</div>
-</div>
-</div>
 <section id="my-thesis-presentation" class="level4">
 <h4 class="anchored" data-anchor-id="my-thesis-presentation">My Thesis Presentation</h4>
 <p><a href="files/thesis_presentation.pdf" target="_blank">View Presentation Slides (PDF)</a></p>
@@ -203,7 +187,7 @@ Abstract (EN)
 <li><a href="files/thesis_presentation.pdf">Presentation</a></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled" title="Key Highlights">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -212,7 +196,7 @@ Key Highlights
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Dataset</strong>: 29 OECD countries (1998–2021) using OECD Statistics &amp; World Bank data<br>

@@ -1,38 +1,36 @@
 ---
-title: "Система рекомендаций комиксов"
+title: "Comic book recommendation system"
 format: html
 ---
 
-## Обзор проекта
+## Project summary
 
 ![](../images/comics-thumb.png)
 
-В данном проекте использовались данные с сайта Good Reads, оценки пользователей, выставленные для комиксов, а также характеристики комиксов.
+This project used data from the Good Reads website, user ratings for comics, and comic characteristics.
 
-Система рекомендаций комиксов основана на двух подходах: **коллаборативная фильтрация** и **content-based рекомендации**. В рамках проекта был проведена **предобработка данных**, **сентимент-анализ описаний**, а также использование **сетевого анализа**.
+The comic recommendation system is based on two approaches: **collaborative filtering** and **content-based recommendations**. The project included **data preprocessing**, **sentiment analysis of descriptions**, and **network analysis**.
 
-  
-[Посмотреть полный отчёт с кодом, графиками и анализом](../reports/comics-report.html)
+[View the full report with code, graphs, and analysis](../reports/comics-report.html)
 ---
 
-## Методы и особенности
+## Methods and Features
 
-- **Коллаборативная фильтрация (UBCF)**: на основе матрицы user-item и оценки RMSE.
-- **Content-based рекомендации**: использовались признаки, такие как издательство, жанры (полки), средний сентимент.
-- **Сетевой анализ**: визуализация связей между комиксами (от него впоследствии отказались как от нерелевантного для рекомендаций).
-- **Оценка результатов**: как через RMSE/MAE, так и вручную (через тестовых пользователей), проверялась адекватности рекомендаций (путем сравнения характеристик понравившихся и рекомендованных пользователю комиксов)
+- **Collaborative Filtering (UBCF)**: based on the user-item matrix and RMSE score.
+- Content-based Recommendations: used features such as publisher, genres (shelves), and average sentiment.
+- **Network Analysis**: visualization of relationships between comics (later abandoned as irrelevant for recommendations).
+- **Results evaluation**: both RMSE/MAE and manual (using test users) validation of recommendations was performed (by comparing the characteristics of comics liked and recommended to the user).
 ---
 
-## Ключевые особенности
+## Key Features
 
-- Предобработка: добавление тестовых пользователей и оценок, чистка данных
-- Сентимент-анализ: описание разбивалось на слова, считался средний сентимент по каждому комиксу
-- Content-based: строилась матрица схожести между комиксами по выбранным признакам
+- Preprocessing: adding test users and ratings, cleaning the data
+- Sentiment analysis: descriptions were broken down into words, and the average sentiment for each comic was calculated
+- Content-based: a similarity matrix between comics was constructed based on the selected features
 
 ---
 
-## Выводы
-- Результаты сетевого анализа показали, что он не имеет ничего полезного для рекомендации, поэтому решено было его не использовать.
-- Формальная оценка коллаборативной фильтрации показала, что модель, построенная методом UBCF работает лучше, чем IBCF, поскольку имеет более низкие значения RMSE,MSE и MAE. Следовательно, для создания функции мы использовали ее.
-- Сравнивая характеристики (проверка на адекватность) комиксов, которые понравились пользователю и которые были рекомендованы content-based, мы пришли к выводу, что content-based система работает хорошо.
-- Основываясь на внутренней пользовательской оценке система content-based лучше справилась с рекомендациями, чем коллаборативная фильтрация: названия издательств и пользовательских полок были такие же, как и в тех, которым пользователь поставил высокую оценку.
+## Conclusions
+- The results of the network analysis showed that it was not useful for recommendation, so it was decided not to use it.
+- A formal evaluation of collaborative filtering showed that the model built using the UBCF method performed better than the IBCF, as it had lower RMSE, MSE, and MAE values. Therefore, we used it to create the function. - By comparing the characteristics (validation) of comics that users liked and those recommended by the content-based system, we concluded that the content-based system worked well.
+- Based on internal user ratings, the content-based system performed better in recommending comics than the collaborative filtering: the publisher names and user-generated shelves were the same as those that the user rated highly.

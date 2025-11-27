@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Анализ оттока сотрудников в R&amp;D – Anna Pirogova — Data Scientist &amp; Health Economist</title>
+<title>R&amp;D Employee Churn Analysis – Anna Pirogova — Data Scientist &amp; Health Economist</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -92,15 +92,19 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Обо мне</span></a>
+<span class="menu-text">About me</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../portfolio.html"> 
-<span class="menu-text">Портфолио</span></a>
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../research_academic_work.html"> 
-<span class="menu-text">Исследования</span></a>
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../contact.html"> 
+<span class="menu-text">Contact</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -118,9 +122,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#обзор-проекта" id="toc-обзор-проекта" class="nav-link active" data-scroll-target="#обзор-проекта">Обзор проекта</a></li>
-  <li><a href="#методы-и-особенности" id="toc-методы-и-особенности" class="nav-link" data-scroll-target="#методы-и-особенности">Методы и особенности</a></li>
-  <li><a href="#выводы" id="toc-выводы" class="nav-link" data-scroll-target="#выводы">Выводы</a></li>
+  <li><a href="#project-summary" id="toc-project-summary" class="nav-link active" data-scroll-target="#project-summary">Project summary</a></li>
+  <li><a href="#methods-and-features" id="toc-methods-and-features" class="nav-link" data-scroll-target="#methods-and-features">Methods and Features</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
   </ul>
 </nav>
     </div>
@@ -129,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Анализ оттока сотрудников в R&amp;D</h1>
+<h1 class="title">R&amp;D Employee Churn Analysis</h1>
 </div>
 
 
@@ -146,31 +150,31 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="обзор-проекта" class="level2">
-<h2 class="anchored" data-anchor-id="обзор-проекта">Обзор проекта</h2>
+<section id="project-summary" class="level2">
+<h2 class="anchored" data-anchor-id="project-summary">Project summary</h2>
 <p><img src="../images/employee-churn-thumb.png" width="50%"></p>
-<p>В рамках проекта проведён анализ факторов оттока сотрудников в стратегически важном департаменте <strong>Research &amp; Development</strong>. Использованы данные из SQL-базы, объединены таблицы <code>profile</code>, <code>portfolio</code>, <code>education</code>. Построена модель логистической регрессии на основе обработанных и сбалансированных данных.</p>
-<p><a href="../reports/employee-churn-dashboard.html">Открыть интерактивный дэшборд</a></p>
-<p><a href="../reports/employee-churn.html">Посмотреть полный отчёт с кодом, графиками и анализом</a></p>
+<p>The project included an analysis of employee attrition factors in the strategically important <strong>Research &amp; Development</strong> department. Data from an SQL database was used, combining the profile, portfolio, and education tables. A logistic regression model was built based on the processed and balanced data.</p>
+<p><a href="../reports/employee-churn-dashboard.html">Open interactive dashboard</a></p>
+<p><a href="../reports/employee-churn.html">View full report with code, graphs, and analysis</a></p>
 <hr>
 </section>
-<section id="методы-и-особенности" class="level2">
-<h2 class="anchored" data-anchor-id="методы-и-особенности">Методы и особенности</h2>
+<section id="methods-and-features" class="level2">
+<h2 class="anchored" data-anchor-id="methods-and-features">Methods and Features</h2>
 <ul>
-<li><strong>SQL-запросы</strong> к базе данных + предобработка в R</li>
-<li><strong>Визуализация</strong> распределений по полу, возрасту, должности, зарплате</li>
-<li><strong>Логистическая регрессия</strong> с SMOTE для балансировки классов</li>
-<li><strong>Оценка модели</strong>: accuracy 0.81, sensitivity 0.82</li>
-<li><strong>Интерпретация модели</strong> через Odds Ratio и влияние факторов</li>
-<li><strong>Симуляции</strong>: влияние сокращения переработок и повышения удовлетворенности</li>
+<li><strong>SQL queries</strong> to the database + preprocessing in R</li>
+<li><strong>Visualization</strong> of distributions by gender, age, position, and salary</li>
+<li><strong>Logistic regression</strong> with SMOTE for class balancing</li>
+<li><strong>Model evaluation</strong>: accuracy 0.81, sensitivity 0.82</li>
+<li><strong>Model interpretation</strong> using Odds Ratio and the influence of factors</li>
+<li><strong>Simulations</strong>: the impact of reducing overtime and increasing satisfaction</li>
 </ul>
 <hr>
 </section>
-<section id="выводы" class="level2">
-<h2 class="anchored" data-anchor-id="выводы">Выводы</h2>
-<p>Основные факторы, повышающие риск ухода: - переработки (<code>OverTime = Yes</code>) - частые командировки - неудовлетворённость рабочими условиями и отношениями - низкая вовлечённость</p>
-<p>Факторы, снижающие риск ухода: - высокая вовлечённость - высокая удовлетворенность работой - докторская степень</p>
-<p>Предложены конкретные меры: оптимизация нагрузки, повышение вовлечённости и среды, симуляция которых снизила прогнозируемый отток на <strong>22.4%</strong>.</p>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p>The main factors increasing the risk of leaving: - overtime (<code>OverTime = Yes</code>) - frequent Business trips - dissatisfaction with work conditions and relationships - low engagement</p>
+<p>Factors that reduce the risk of attrition: - high engagement - high job satisfaction - doctoral degree</p>
+<p>Specific measures were proposed: workload optimization, increasing engagement and the environment, the simulation of which reduced the predicted attrition by <strong>22.4%</strong>.</p>
 
 
 </section>

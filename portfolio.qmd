@@ -1,10 +1,10 @@
 ---
-title: "Портфолио"
+title: "Portfolio"
 format: html
 page-layout: full
 ---
 
-## Машинное обучение и моделирование
+## Machine Learning and Modelling
 
 ::: {.project-box}
 <div class="project-img-wrapper">
@@ -13,11 +13,11 @@ page-layout: full
 
 <div class="project-text">
 
-<div class="project-title">Система рекомендаций комиксов</div>
+<div class="project-title">Comic book recommendation system</div>
 
-<div class="project-desc">Коллаборативная фильтрация (ALS, user-item матрица, оценка RMSE).</div>
+<div class="project-desc">Collaborative filtering (ALS, user-item matrix, RMSE estimation).</div>
 
-<div class="project-link">[Подробнее →](projects/comics-rec.qmd)</div>
+<div class="project-link">[Read more →](projects/comics-rec.qmd)</div>
 
 </div>
 :::
@@ -29,11 +29,11 @@ page-layout: full
 
 <div class="project-text">
 
-<div class="project-title">Анализ оттока сотрудников в R&D</div>
+<div class="project-title">R&D Employee Churn Analysis</div>
 
-<div class="project-desc">SQL + R анализ: соединение таблиц, визуализация и логистическая регрессия. Выявлены ключевые факторы оттока (переработки, командировки), дэшборд для HR.</div>
+<div class="project-desc">SQL + R analysis: table joins, visualization, and logistic regression. Key churn factors (overtime, business trips) identified, HR dashboard.</div>
 
-<div class="project-link">[Подробнее →](projects/employee-churn.qmd)</div>
+<div class="project-link">[Read more →](projects/employee-churn.qmd)</div>
 
 </div>
 :::
@@ -45,11 +45,11 @@ page-layout: full
 
 <div class="project-text">
 
-<div class="project-title">FE Models & Double ML (Магистерская диссертация)</div>
+<div class="project-title">FE Models & Double ML (Master's Thesis)</div>
 
-<div class="project-desc">Фиксированные эффекты и двойное машинное обучение. CausalML, heterogeneity analysis.</div>
+<div class="project-desc">Fixed effects and double ML. Causal ML, heterogeneity analysis.</div>
 
-<div class="project-link">[Подробнее →](projects/thesis.qmd)</div>
+<div class="project-link">[Read more →](projects/thesis.qmd)</div>
 
 </div>
 :::
@@ -62,11 +62,11 @@ page-layout: full
 
 <div class="project-text">
 
-<div class="project-title">Анализ данных по Kickstarter</div>
+<div class="project-title">Kickstarter Data Analysis</div>
 
-<div class="project-desc">Предсказание успешности проекта</div>
+<div class="project-desc">Predicting Project Success</div>
 
-<div class="project-link">[Подробнее →](projects/kickstarter.qmd)</div>
+<div class="project-link">[Read more →](projects/kickstarter.qmd)</div>
 
 </div>
 :::
@@ -78,11 +78,11 @@ page-layout: full
 
 <div class="project-text">
 
-<div class="project-title">Анализ данных по авиаперевозкам</div>
+<div class="project-title">Analysis of Airline Data</div>
 
-<div class="project-desc">Исследование оценок лаундж-зон и самолетов. </div>
+<div class="project-desc">A Study of Lounge and Aircraft Ratings.</div>
 
-<div class="project-link">[Подробнее →](reports/flights.qmd)</div>
+<div class="project-link">[Read more →](reports/flights.qmd)</div>
 
 </div>
 :::
@@ -91,7 +91,7 @@ page-layout: full
 
 ---
 
-## Дашборды
+## Dashboards
 
 ::: {.project-box}
 <div class="project-img-wrapper">
@@ -100,11 +100,11 @@ page-layout: full
 
 <div class="project-text">
 
-<div class="project-title">Интерактивный дашборд: отток сотрудников в R&D</div>
+<div class="project-title">Interactive Dashboard: R&D Employee Attrition</div>
 
-<div class="project-desc">Интерактивный дашборд, создан с помощью Shiny.</div>
+<div class="project-desc">Interactive dashboard, created with Shiny.</div>
 
-<div class="project-link">[Подробнее →](reports/employee-churn-dashboard.html)</div>
+<div class="project-link">[Read more →](reports/employee-churn-dashboard.html)</div>
 
 </div>
 :::
@@ -117,11 +117,11 @@ page-layout: full
 
 <div class="project-text">
 
-<div class="project-title">Анализ длины сделки: дашборд</div>
+<div class="project-title">Deal Length Analysis: Dashboard</div>
 
-<div class="project-desc">Дашборд по длине цикла сделки: расчет средних значений, линейные и столбчатые диаграммы. Данные анонимизированы для сохранения конфиденциальности. Создан в Zoho Analytics.</div>
+<div class="project-desc">Deal Length Dashboard: Calculates averages, displays line and bar charts. Data anonymized to preserve privacy. Created in Zoho Analytics.</div>
 
-<div class="project-link">[Подробнее →](projects/cycle-length-dashboard.qmd)</div>
+<div class="project-link">[Read more →](projects/cycle-length-dashboard.qmd)</div>
 
 </div>
 :::
@@ -134,11 +134,11 @@ page-layout: full
 
 <div class="project-text">
 
-<div class="project-title">Дашборд по Kickstarter</div>
+<div class="project-title">Kickstarter Dashboard</div>
 
-<div class="project-desc">Визуализация успехов проектов по категориям, времени запуска, названию.</div>
+<div class="project-desc">Visualization of project success by category, launch time, and name.</div>
 
-<div class="project-link">[Подробнее →](reports/kickstarter-dashboard.html)</div>
+<div class="project-link">[Read more →](reports/kickstarter-dashboard.html)</div>
 
 </div>
 :::
@@ -151,17 +151,17 @@ page-layout: full
 
 <div class="project-text">
 
-<div class="project-title">Дашборд: авиаперевозки</div>
+<div class="project-title">Dashboard: Air Travel</div>
 
-<div class="project-desc">Исследование оценок лаундж-зон и самолетов. </div>
+<div class="project-desc">A study of lounge and aircraft ratings.</div>
 
-<div class="project-link">[Подробнее →](reports/flights-dashboard.html)</div>
+<div class="project-link">[Read more →](reports/flights-dashboard.html)</div>
 
 </div>
 :::
 ---
 
-## Боты и автоматизация
+## Bots and automation
 
 
 ::: {.project-box}
@@ -171,11 +171,11 @@ page-layout: full
 
 <div class="project-text">
 
-<div class="project-title">Telegram-бот: рекомендации настольных игр</div>
+<div class="project-title">Telegram bot: board game recommendations</div>
 
-<div class="project-desc">Бот на R с inline-режимом, база игр, фильтрация по жанрам </div>
+<div class="project-desc">Bot in R with inline mode, game database, filtering by genre</div>
 
-<div class="project-link">[Подробнее →](projects/boardgame-bot.qmd)</div>
+<div class="project-link">[Read more →](projects/boardgame-bot.qmd)</div>
 
 </div>
 :::
@@ -188,11 +188,11 @@ page-layout: full
 
 <div class="project-text">
 
-<div class="project-title">Telegram-бот: ежедневная готовность по HRV</div>
+<div class="project-title">Telegram bot: daily fitness based on HRV</div>
 
-<div class="project-desc">Интеграция с Fitbit API, расчёт тренировочной готовности, Telegram-уведомления. </div>
+<div class="project-desc">Fitbit API integration, training fitness calculation, Telegram notifications.</div>
 
-<div class="project-link">[Подробнее →](projects/hrv-bot.qmd)</div>
+<div class="project-link">[Read more →](projects/hrv-bot.qmd)</div>
 
 </div>
 :::

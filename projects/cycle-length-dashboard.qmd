@@ -1,5 +1,5 @@
 ---
-title: "Дашборд Анализ Длины Сделки"
+title: "Deal cycle length analysis dashboard"
 page-layout: full
 format: html
 ---

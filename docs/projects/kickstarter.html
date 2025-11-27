@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Анализ данных по проектам Kickstarter – Anna Pirogova — Data Scientist &amp; Health Economist</title>
+<title>Kickstarter Project Data Analysis – Anna Pirogova — Data Scientist &amp; Health Economist</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -92,15 +92,19 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Обо мне</span></a>
+<span class="menu-text">About me</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../portfolio.html"> 
-<span class="menu-text">Портфолио</span></a>
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../research_academic_work.html"> 
-<span class="menu-text">Исследования</span></a>
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../contact.html"> 
+<span class="menu-text">Contact</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -118,32 +122,32 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#обзор-проекта" id="toc-обзор-проекта" class="nav-link active" data-scroll-target="#обзор-проекта">1. Обзор проекта</a></li>
-  <li><a href="#предобработка-данных" id="toc-предобработка-данных" class="nav-link" data-scroll-target="#предобработка-данных">2. Предобработка данных</a></li>
-  <li><a href="#разведочный-анализ" id="toc-разведочный-анализ" class="nav-link" data-scroll-target="#разведочный-анализ">3. Разведочный анализ</a>
+  <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">1. Project Overview</a></li>
+  <li><a href="#data-preprocessing" id="toc-data-preprocessing" class="nav-link" data-scroll-target="#data-preprocessing">2. Data Preprocessing</a></li>
+  <li><a href="#exploratory-analysis" id="toc-exploratory-analysis" class="nav-link" data-scroll-target="#exploratory-analysis">3. Exploratory Analysis</a>
   <ul class="collapse">
-  <li><a href="#самые-дорогие-успешные-проекты-по-категориям" id="toc-самые-дорогие-успешные-проекты-по-категориям" class="nav-link" data-scroll-target="#самые-дорогие-успешные-проекты-по-категориям">3.1 Самые дорогие успешные проекты по категориям</a></li>
-  <li><a href="#процент-успешных-проектов-по-категориям" id="toc-процент-успешных-проектов-по-категориям" class="nav-link" data-scroll-target="#процент-успешных-проектов-по-категориям">3.2 Процент успешных проектов по категориям</a></li>
-  <li><a href="#подкатегории-gen_category" id="toc-подкатегории-gen_category" class="nav-link" data-scroll-target="#подкатегории-gen_category">3.3 Подкатегории (gen_category)</a></li>
-  <li><a href="#статистические-тесты" id="toc-статистические-тесты" class="nav-link" data-scroll-target="#статистические-тесты">3.4 Статистические тесты</a></li>
+  <li><a href="#most-expensive-successful-projects-by-category" id="toc-most-expensive-successful-projects-by-category" class="nav-link" data-scroll-target="#most-expensive-successful-projects-by-category">3.1 Most Expensive Successful Projects by Category</a></li>
+  <li><a href="#percentage-of-successful-projects-by-category" id="toc-percentage-of-successful-projects-by-category" class="nav-link" data-scroll-target="#percentage-of-successful-projects-by-category">3.2 Percentage of Successful Projects by Category</a></li>
+  <li><a href="#subcategories-gen_category" id="toc-subcategories-gen_category" class="nav-link" data-scroll-target="#subcategories-gen_category">3.3 Subcategories (gen_category)</a></li>
+  <li><a href="#statistical-tests" id="toc-statistical-tests" class="nav-link" data-scroll-target="#statistical-tests">3.4 Statistical Tests</a></li>
   </ul></li>
-  <li><a href="#влияние-даты-и-времени-запуска" id="toc-влияние-даты-и-времени-запуска" class="nav-link" data-scroll-target="#влияние-даты-и-времени-запуска">4. Влияние даты и времени запуска</a>
+  <li><a href="#the-impact-of-launch-date-and-time" id="toc-the-impact-of-launch-date-and-time" class="nav-link" data-scroll-target="#the-impact-of-launch-date-and-time">4. The Impact of Launch Date and Time</a>
   <ul class="collapse">
-  <li><a href="#месяц-и-день" id="toc-месяц-и-день" class="nav-link" data-scroll-target="#месяц-и-день">4.1 Месяц и день</a></li>
-  <li><a href="#сезон-и-день-недели" id="toc-сезон-и-день-недели" class="nav-link" data-scroll-target="#сезон-и-день-недели">4.2 Сезон и день недели</a></li>
-  <li><a href="#время-суток" id="toc-время-суток" class="nav-link" data-scroll-target="#время-суток">4.3 Время суток</a></li>
-  <li><a href="#длительность-кампании" id="toc-длительность-кампании" class="nav-link" data-scroll-target="#длительность-кампании">4.4 Длительность кампании</a></li>
+  <li><a href="#month-and-day" id="toc-month-and-day" class="nav-link" data-scroll-target="#month-and-day">4.1 Month and Day</a></li>
+  <li><a href="#season-and-day-of-the-week" id="toc-season-and-day-of-the-week" class="nav-link" data-scroll-target="#season-and-day-of-the-week">4.2 Season and Day of the Week</a></li>
+  <li><a href="#time-of-day" id="toc-time-of-day" class="nav-link" data-scroll-target="#time-of-day">4.3 Time of Day</a></li>
+  <li><a href="#campaign-duration" id="toc-campaign-duration" class="nav-link" data-scroll-target="#campaign-duration">4.4 Campaign Duration</a></li>
   </ul></li>
-  <li><a href="#название-проекта-как-источник-признаков" id="toc-название-проекта-как-источник-признаков" class="nav-link" data-scroll-target="#название-проекта-как-источник-признаков">5. Название проекта как источник признаков</a></li>
-  <li><a href="#построение-модели" id="toc-построение-модели" class="nav-link" data-scroll-target="#построение-модели">6. Построение модели</a>
+  <li><a href="#project-title-as-a-source-of-indicators" id="toc-project-title-as-a-source-of-indicators" class="nav-link" data-scroll-target="#project-title-as-a-source-of-indicators">5. Project Title as a Source of Indicators</a></li>
+  <li><a href="#model-construction" id="toc-model-construction" class="nav-link" data-scroll-target="#model-construction">6. Model Construction</a>
   <ul class="collapse">
-  <li><a href="#сложная-модель-rpart-без-отбора-признаков" id="toc-сложная-модель-rpart-без-отбора-признаков" class="nav-link" data-scroll-target="#сложная-модель-rpart-без-отбора-признаков">6.1 Сложная модель (rpart, без отбора признаков)</a></li>
-  <li><a href="#упрощённая-модель" id="toc-упрощённая-модель" class="nav-link" data-scroll-target="#упрощённая-модель">6.2 Упрощённая модель</a></li>
-  <li><a href="#интерпретация-групп" id="toc-интерпретация-групп" class="nav-link" data-scroll-target="#интерпретация-групп">6.3 Интерпретация групп</a></li>
+  <li><a href="#complex-model-rpart-without-feature-selection" id="toc-complex-model-rpart-without-feature-selection" class="nav-link" data-scroll-target="#complex-model-rpart-without-feature-selection">6.1 Complex Model (rpart, without feature selection)</a></li>
+  <li><a href="#simplified-model" id="toc-simplified-model" class="nav-link" data-scroll-target="#simplified-model">6.2 Simplified Model</a></li>
+  <li><a href="#interpretation-of-groups" id="toc-interpretation-of-groups" class="nav-link" data-scroll-target="#interpretation-of-groups">6.3 Interpretation of Groups</a></li>
   </ul></li>
-  <li><a href="#проверенные-гипотезы" id="toc-проверенные-гипотезы" class="nav-link" data-scroll-target="#проверенные-гипотезы">7. Проверенные гипотезы</a></li>
-  <li><a href="#общие-выводы" id="toc-общие-выводы" class="nav-link" data-scroll-target="#общие-выводы">8. Общие выводы</a></li>
-  <li><a href="#рекомендации" id="toc-рекомендации" class="nav-link" data-scroll-target="#рекомендации">9. Рекомендации</a></li>
+  <li><a href="#tested-hypotheses" id="toc-tested-hypotheses" class="nav-link" data-scroll-target="#tested-hypotheses">7. Tested hypotheses</a></li>
+  <li><a href="#general-conclusions" id="toc-general-conclusions" class="nav-link" data-scroll-target="#general-conclusions">8. General Conclusions</a></li>
+  <li><a href="#recommendations" id="toc-recommendations" class="nav-link" data-scroll-target="#recommendations">9. Recommendations</a></li>
   </ul>
 </nav>
     </div>
@@ -152,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Анализ данных по проектам Kickstarter</h1>
+<h1 class="title">Kickstarter Project Data Analysis</h1>
 </div>
 
 
@@ -169,138 +173,130 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="обзор-проекта" class="level1">
-<h1>1. Обзор проекта</h1>
+<section id="project-overview" class="level1">
+<h1>1. Project Overview</h1>
 <p><img src="../images/kickstarter-thumb.png" width="50%"></p>
-<p>Цель проекта — исследовать факторы, влияющие на успешность проектов, размещённых на платформе Kickstarter. Основное внимание уделяется категориальным переменным, времени запуска и характеристикам названия проекта. Построена модель классификационного дерева решений (decision tree), с помощью функции rpart(), которая предсказывает успех проекта.</p>
-<p><a href="../reports/kickstarter-report.html">Посмотреть полный отчёт с графиками и анализом</a></p>
-<p><a href="../reports/kickstarter-dashboard.html">Посмотреть дашборд</a></p>
-<p><a href="../reports/kickstarter-code.html">Посмотреть код</a></p>
+<p>The goal of the project is to investigate the factors influencing the success of projects hosted on the Kickstarter platform. The focus is on categorical variables, launch time, and project name characteristics. A classification decision tree model was constructed using the rpart() function, which predicts project success.</p>
+<p><a href="../reports/kickstarter-report.html">View full report with graphs and analysis</a></p>
+<p><a href="../reports/kickstarter-dashboard.html">View dashboard</a></p>
+<p><a href="../reports/kickstarter-code.html">View code</a></p>
 </section>
-<section id="предобработка-данных" class="level1">
-<h1>2. Предобработка данных</h1>
-<p>В рамках подготовки данных были реализованы следующие шаги:</p>
+<section id="data-preprocessing" class="level1">
+<h1>2. Data Preprocessing</h1>
+<p>The following steps were performed as part of data preparation:</p>
 <ul>
-<li>Преобразование строковых переменных в факторы для проведения статистических тестов.</li>
-<li>Преобразование даты запуска (<code>launched</code>) в формат Date.</li>
-<li>Создание новых признаков:
-<ul>
-<li>на основе даты запуска: месяц, день, сезон, день недели, час запуска, часть дня, длительность кампании;</li>
-<li>на основе категорий: комбинированная переменная <code>gen_category</code>, длины строк, количество слов, первые буквы и совпадения названий;</li>
-<li>на основе названия проекта: длина названия, количество слов, наличие КАПСА и специальных символов.</li>
-</ul></li>
+<li>Converting string variables to factors for statistical tests.</li>
+<li>Converting the launch date (<code>launched</code>) to Date format.</li>
+<li>Creating new features:</li>
+<li>Based on launch date: month, day, season, day of the week, launch hour, part of the day, campaign duration;</li>
+<li>Based on categories: combined variable <code>gen_category</code>, string lengths, word count, first letters, and name matches;</li>
+<li>Based on project name: name length, word count, presence of CAPS and special characters.</li>
 </ul>
 </section>
-<section id="разведочный-анализ" class="level1">
-<h1>3. Разведочный анализ</h1>
-<section id="самые-дорогие-успешные-проекты-по-категориям" class="level2">
-<h2 class="anchored" data-anchor-id="самые-дорогие-успешные-проекты-по-категориям">3.1 Самые дорогие успешные проекты по категориям</h2>
-<p>Наибольшая средняя сумма собрана в категориях: - <strong>Technology</strong> - <strong>Design</strong> - <strong>Food</strong></p>
+<section id="exploratory-analysis" class="level1">
+<h1>3. Exploratory Analysis</h1>
+<section id="most-expensive-successful-projects-by-category" class="level2">
+<h2 class="anchored" data-anchor-id="most-expensive-successful-projects-by-category">3.1 Most Expensive Successful Projects by Category</h2>
+<p>The highest average revenue was collected in the following categories: - <strong>Technology</strong> - <strong>Design</strong> - <strong>Food</strong></p>
 </section>
-<section id="процент-успешных-проектов-по-категориям" class="level2">
-<h2 class="anchored" data-anchor-id="процент-успешных-проектов-по-категориям">3.2 Процент успешных проектов по категориям</h2>
-<p>Самые успешные категории: - <strong>Comics</strong> - <strong>Dance</strong> - <strong>Theater</strong> - <strong>Games</strong> - <strong>Music</strong></p>
-<p>Интересно, что самые дорогие категории (например, Technology) показывают самый низкий процент успеха (~25%).</p>
+<section id="percentage-of-successful-projects-by-category" class="level2">
+<h2 class="anchored" data-anchor-id="percentage-of-successful-projects-by-category">3.2 Percentage of Successful Projects by Category</h2>
+<p>Most Successful Categories: - <strong>Comics</strong> - <strong>Dance</strong> - <strong>Theater</strong> - <strong>Games</strong> - <strong>Music</strong></p>
+<p>Interestingly, the most expensive categories (e.g., Technology) show the lowest success rate (~25%).</p>
 </section>
-<section id="подкатегории-gen_category" class="level2">
-<h2 class="anchored" data-anchor-id="подкатегории-gen_category">3.3 Подкатегории (gen_category)</h2>
-<p>Анализ по подкатегориям выявил: - Более высокие суммы сбора в специфичных подкатегориях (например, <em>Movie Theaters</em>, <em>Camera Equipment</em>). - Более точное понимание успешности — например, <em>Video Games</em> понижают средний успех в категории <em>Games</em>, тогда как <em>Tabletop Games</em> — повышают.</p>
+<section id="subcategories-gen_category" class="level2">
+<h2 class="anchored" data-anchor-id="subcategories-gen_category">3.3 Subcategories (gen_category)</h2>
+<p>Analysis by subcategory revealed: - Higher revenue in specific subcategories (e.g., <em>Movie Theaters</em>, <em>Camera Equipment</em>). - A more precise understanding of success—for example, <em>Video Games</em> lower the average success in the <em>Games</em> category, while <em>Tabletop Games</em> increase it.</p>
 </section>
-<section id="статистические-тесты" class="level2">
-<h2 class="anchored" data-anchor-id="статистические-тесты">3.4 Статистические тесты</h2>
-<p>Проведён тест независимости между успешностью и: - <code>category</code> - <code>main_category</code> - <code>gen_category</code></p>
-<p>Во всех случаях <strong>p-value &lt; 0.05</strong>, гипотеза о значимости различий подтверждена.</p>
+<section id="statistical-tests" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-tests">3.4 Statistical Tests</h2>
+<p>A test of independence was conducted between success and: - <code>category</code> - <code>main_category</code> - <code>gen_category</code></p>
+<p>In all cases, <strong>p-value &lt; 0.05</strong>, the hypothesis of significant differences is confirmed.</p>
 </section>
 </section>
-<section id="влияние-даты-и-времени-запуска" class="level1">
-<h1>4. Влияние даты и времени запуска</h1>
-<section id="месяц-и-день" class="level3">
-<h3 class="anchored" data-anchor-id="месяц-и-день">4.1 Месяц и день</h3>
-<p>Тесты показывают статистически значимые, но практически <strong>незначительные различия</strong>.</p>
+<section id="the-impact-of-launch-date-and-time" class="level1">
+<h1>4. The Impact of Launch Date and Time</h1>
+<section id="month-and-day" class="level3">
+<h3 class="anchored" data-anchor-id="month-and-day">4.1 Month and Day</h3>
+<p>Tests show statistically significant, but practically <strong>insignificant</strong>, differences.</p>
 </section>
-<section id="сезон-и-день-недели" class="level3">
-<h3 class="anchored" data-anchor-id="сезон-и-день-недели">4.2 Сезон и день недели</h3>
+<section id="season-and-day-of-the-week" class="level3">
+<h3 class="anchored" data-anchor-id="season-and-day-of-the-week">4.2 Season and Day of the Week</h3>
 <ul>
-<li>Лёгкий рост успешности осенью.</li>
-<li>Наибольшая успешность у проектов, запущенных <strong>вторник–среда</strong>.</li>
+<li>A slight increase in success in the fall.</li>
+<li>Projects launched <strong>Tuesday–Wednesday</strong> have the greatest success.</li>
 </ul>
 </section>
-<section id="время-суток" class="level3">
-<h3 class="anchored" data-anchor-id="время-суток">4.3 Время суток</h3>
-<p>Проекты, запущенные <strong>во второй половине дня (12:00–18:00)</strong>, демонстрируют лучший результат.</p>
+<section id="time-of-day" class="level3">
+<h3 class="anchored" data-anchor-id="time-of-day">4.3 Time of Day</h3>
+<p>Projects launched in the afternoon (12:00–18:00) demonstrate better results.</p>
 </section>
-<section id="длительность-кампании" class="level3">
-<h3 class="anchored" data-anchor-id="длительность-кампании">4.4 Длительность кампании</h3>
+<section id="campaign-duration" class="level3">
+<h3 class="anchored" data-anchor-id="campaign-duration">4.4 Campaign Duration</h3>
 <ul>
-<li>Проекты с длительностью <strong>более 30 дней</strong> — менее успешны.</li>
-<li><strong>Успешные проекты в среднем короче</strong>, чем неуспешные.</li>
+<li>Projects lasting more than 30 days are less successful.</li>
+<li>Successful projects are, on average, shorter than unsuccessful ones.</li>
 </ul>
 </section>
 </section>
-<section id="название-проекта-как-источник-признаков" class="level1">
-<h1>5. Название проекта как источник признаков</h1>
-<p>Анализ показал, что успешные проекты чаще имеют: - Более <strong>длинные названия</strong> - <strong>Больше слов</strong> - <strong>КАПС</strong> в отдельных словах - Спецсимволы (“:”, “!”, “;”)</p>
-<p>Все переменные подтвердили свою <strong>значимость статистическими тестами</strong>.</p>
+<section id="project-title-as-a-source-of-indicators" class="level1">
+<h1>5. Project Title as a Source of Indicators</h1>
+<p>The analysis showed that successful projects more often have: - Longer titles - More words - All caps in certain words - Special characters (“:”, “!”, “;”)</p>
+<p>All variables were confirmed to be significant by statistical tests.</p>
 </section>
-<section id="построение-модели" class="level1">
-<h1>6. Построение модели</h1>
-<section id="сложная-модель-rpart-без-отбора-признаков" class="level2">
-<h2 class="anchored" data-anchor-id="сложная-модель-rpart-без-отбора-признаков">6.1 Сложная модель (rpart, без отбора признаков)</h2>
+<section id="model-construction" class="level1">
+<h1>6. Model Construction</h1>
+<section id="complex-model-rpart-without-feature-selection" class="level2">
+<h2 class="anchored" data-anchor-id="complex-model-rpart-without-feature-selection">6.1 Complex Model (rpart, without feature selection)</h2>
 <ul>
-<li>Accuracy на тренировочной выборке: <strong>0.70</strong></li>
-<li>Accuracy на тестовой выборке: <strong>0.68</strong></li>
-<li>Применено обрезание дерева по оптимальному <code>cp</code> — точность практически не изменилась.</li>
+<li>Accuracy on training set: <strong>0.70</strong></li>
+<li>Accuracy on test set: <strong>0.68</strong></li>
+<li>Tree pruning based on optimal <code>cp</code> was applied – accuracy remained virtually unchanged.</li>
 </ul>
-<p>Наиболее важные переменные: - <code>category</code>, <code>gen_category</code>, <code>main_category</code> - <code>cat_first_letter</code>, <code>gen_cat_first_letter</code> - <code>usd_goal_real</code>, <code>period_length</code>, <code>name_length</code> - <code>launch_dayPart</code>, <code>currency</code>, <code>country</code>, <code>launch_hour</code></p>
+<p>The most important variables are: - <code>category</code>, <code>gen_category</code>, <code>main_category</code> - <code>cat_first_letter</code>, <code>gen_cat_first_letter</code> - <code>usd_goal_real</code>, <code>period_length</code>, <code>name_length</code> - <code>launch_dayPart</code>, <code>currency</code>, <code>country</code>, <code>launch_hour</code></p>
 </section>
-<section id="упрощённая-модель" class="level2">
-<h2 class="anchored" data-anchor-id="упрощённая-модель">6.2 Упрощённая модель</h2>
-<p>Построена модель с меньшим числом признаков на основе важности переменных из модели 1:</p>
+<section id="simplified-model" class="level2">
+<h2 class="anchored" data-anchor-id="simplified-model">6.2 Simplified Model</h2>
+<p>A model with a smaller number of features was built based on the variable importance from Model 1:</p>
 <ul>
-<li>Accuracy на тренировочной выборке: <strong>0.675</strong></li>
-<li>Accuracy на тестовой выборке: <strong>0.669</strong></li>
+<li>Accuracy on the training set: <strong>0.675</strong></li>
+<li>Accuracy on the testing set: <strong>0.669</strong></li>
 </ul>
-<p><strong>Снижение точности незначительно</strong>, зато модель проще и легче интерпретируема.</p>
+<p><strong>The decrease in accuracy is minor</strong>, but the model is simpler and easier to interpret.</p>
 </section>
-<section id="интерпретация-групп" class="level2">
-<h2 class="anchored" data-anchor-id="интерпретация-групп">6.3 Интерпретация групп</h2>
-<p>Упрощённая модель выделяет 7 групп проектов с разными вероятностями успеха:</p>
+<section id="interpretation-of-groups" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation-of-groups">6.3 Interpretation of Groups</h2>
+<p>The simplified model identifies seven groups of projects with different probabilities of success:</p>
 <ol type="1">
-<li>Неблагоприятные подкатегории → неуспешен<br>
-</li>
-<li>Благоприятные подкатегории → успешен<br>
-</li>
-<li>Высокая цель (&gt;31 000 USD) → неуспешен<br>
-</li>
-<li>Длинная кампания (&gt;56 дней) → неуспешен<br>
-</li>
-<li>Малая цель (&lt;1418 USD) → успешен<br>
-</li>
-<li>Запуск вечером/ночью → неуспешен<br>
-</li>
-<li>Запуск днём + умеренная цель → успешен</li>
+<li>Unfavorable subcategories → unsuccessful</li>
+<li>Favorable subcategories → successful</li>
+<li>High goal (&gt;$31,000) → unsuccessful</li>
+<li>Long campaign (&gt;56 days) → unsuccessful</li>
+<li>Low goal (&lt;$1,418) → successful</li>
+<li>Evening/night launch → unsuccessful</li>
+<li>Daytime launch + moderate goal → successful</li>
 </ol>
 </section>
 </section>
-<section id="проверенные-гипотезы" class="level1">
-<h1>7. Проверенные гипотезы</h1>
-<p>Во всех случаях гипотезы <strong>о статистически значимых различиях</strong> между успешностью и переменными (категории, даты, названия, длительность и т.д.) <strong>подтвердились</strong> (p-value &lt; 0.05).</p>
+<section id="tested-hypotheses" class="level1">
+<h1>7. Tested hypotheses</h1>
+<p>In all cases, the hypotheses <strong>regarding statistically significant differences</strong> between success and variables (categories, dates, titles, duration, etc.) <strong>were confirmed</strong> (p-value &lt; 0.05).</p>
 </section>
-<section id="общие-выводы" class="level1">
-<h1>8. Общие выводы</h1>
+<section id="general-conclusions" class="level1">
+<h1>8. General Conclusions</h1>
 <ul>
-<li>Категориальные признаки (особенно <code>gen_category</code>) — мощные предикторы успешности.</li>
-<li>Название проекта и особенности запуска (время, длительность) тоже влияют.</li>
-<li>Простая модель может эффективно предсказывать успешность с разумной точностью.</li>
-<li>Разведочный анализ позволил обосновать выбор переменных для модели.</li>
+<li>Categorical features (especially <code>gen_category</code>) are powerful predictors of success.</li>
+<li>The project name and launch characteristics (time, duration) also have an impact.</li>
+<li>A simple model can effectively predict success with reasonable accuracy.</li>
+<li>Exploratory analysis allowed us to justify the choice of variables for the model.</li>
 </ul>
 </section>
-<section id="рекомендации" class="level1">
-<h1>9. Рекомендации</h1>
+<section id="recommendations" class="level1">
+<h1>9. Recommendations</h1>
 <ul>
-<li>При запуске проекта стоит учитывать: <strong>подкатегорию</strong>, <strong>время суток</strong>, <strong>оптимальную длительность</strong> кампании.</li>
-<li>Название проекта должно быть <strong>информативным, длинным, возможно с выделениями (КАПС, знаки)</strong>.</li>
-<li>Подбор правильной подкатегории имеет <strong>ключевое значение</strong> для успеха.</li>
+<li>When launching a project, consider the following: <strong>subcategory</strong>, <strong>time of day</strong>, <strong>optimal campaign duration</strong>.</li>
+<li>The project name should be <strong>informative, long, and possibly with bolding (CAPS, symbols)</strong>.</li>
+<li>Selecting the right subcategory is <strong>key</strong> to success..</li>
 </ul>
 
 
