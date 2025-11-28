@@ -1,9 +1,8 @@
 ---
 title: "Contact"
-format:
-  html:
-    lightbox: true
-    page-layout: full
+format: html
+
+
 ---
 
 ## Let's connect

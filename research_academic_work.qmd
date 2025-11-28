@@ -31,8 +31,8 @@ We can derive important policy implications from these results. Firstly, curativ
 [View Presentation Slides (PDF)](files/thesis_presentation.pdf){target="_blank"}
 
 
-#### 🔗 Downloads
-- [Full Thesis (PDF, EN)](files/masters-thesis-en.pdf)
+#### Downloads
+- [Full Thesis](files/masters-thesis-en.pdf)
 - [Presentation](files/thesis_presentation.pdf)
 
 
@@ -60,14 +60,74 @@ We can derive important policy implications from these results. Firstly, curativ
 
 ## Bachelor's Thesis
 
-### *Title of Your Bachelor's Thesis*  
-**Your University Name, Year**
+### *Impact of COVID-19 on the Job Satisfaction of Russian Employees*  
+**National Research University Higher School of Economics, 2023**
 
-####  Abstract
-This thesis explores...
+**Supervisor:** E.A. Zazdravnykh, PhD (Economics)
 
-#### Download
-- [Full PDF](files/bachelors-thesis.pdf)
+::: {.callout-note collapse="true" title="Abstract (EN)"}
+This study aimed to estimate the effect of COVID-19 pandemic on job satisfaction across low,
+moderate, and high COVID-19 risk groups within the Russian workforce, focusing on
+satisfaction with job in general, working conditions, growth opportunities, and pay. This study
+utilized Heckman probit model using secondary data obtained from the "Russia Longitudinal
+Monitoring Survey, RLMS-HSE” for the years 2019-2020, collected by annual nationwide
+representative survey using probability stratified multistage area sampling. We found that not all
+aspects of job satisfaction were impacted by COVDI-19. Results showed a decline in satisfaction
+with working conditions among high COVID-19 risk workers, while satisfaction in this aspect
+increased in the moderate risk group. Low-risk workers displayed higher job satisfaction in
+general, with growth opportunities, while moderate-risk workers showed higher satisfaction with
+pay. These findings suggest that the pandemic has exacerbated disparities in job satisfaction,
+with the most adverse effects being felt by high-risk and vulnerable workers. This study
+contributes to the literature by examining the differential impact of the COVID-19 pandemic on
+job satisfaction across various risk groups in the Russian context and interpreting the results
+based on Job Demands-Resources Model. Limitations include a relatively small sample size for
+the high-risk group and lack of extensive data on vulnerable professions. Future research could
+expand the sample size, incorporate more years of data, and explore monthly trends to provide a
+more comprehensive understanding of the effect of COVID-19 on job satisfaction.
+Keywords: job satisfaction, employee well-being, COVID-19, JD-R model, Russian workforce
+:::
+
+#### My Thesis Presentation
+
+[View Presentation Slides (PDF)](files/bachelors_thesis_presentation.pdf){target="_blank"}
+
+
+#### Downloads
+- [Full Thesis](files/bachelors_thesis.pdf)
+- [Presentation](files/bachelors_thesis_presentation.pdf)
+
+::: {.callout-tip collapse="true" title="Key Highlights"}
+### Low and Moderate Risk Groups
+- Significant increase in **general job satisfaction** in 2020.  
+  This aligns with previous studies (Frutos-Bencze et al., 2022)._
+- More likely to express **satisfaction with growth opportunities** in 2020.  
+  Supported by previous studies (Nicola et al., 2020) and the JD-R model._
+
+### Moderate Risk Group
+- More likely to be **satisfied with pay** in 2020.
+- **Significant increase** in satisfaction with **working conditions** in 2020.
+
+### High Risk Group
+- **No significant decrease** in overall job satisfaction.  
+  This contradicts previous research, but may be explained by psychological resilience (Caponnetto et al., 2022) or by limitations of the current study._
+- **Lower likelihood** of satisfaction with **working conditions** in 2020.  
+  This finding aligns with earlier research (Chirico et al., 2020)._
+
+## Theoretical Contribution
+- Addresses the **research gap** by analyzing the COVID-19 impact on the **Russian workforce**, going beyond remote workers and developed economies.
+- Utilizes the **Heckman probit model** to account for selection bias.
+- Considers **multiple dimensions of job satisfaction**, providing a more comprehensive understanding of the pandemic’s effects.
+
+## Practical Significance (Managerial Application)
+- Highlights the **need for tailored support** strategies for different risk groups in times of crisis.  
+  Especially relevant for high-risk professions._
+- Shows that **low job satisfaction** may result in **higher turnover**, particularly harmful for **essential workers**.
+- Offers actionable insights for **policy design**:
+  - Improve working conditions for high-risk groups.
+  - Implement **flexible work arrangements**.
+  - Ensure **access to protective equipment**.
+:::
+
 
 ---
 
