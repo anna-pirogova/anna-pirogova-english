@@ -35,9 +35,10 @@ Data & CRM Analytics Specialist | May 2021 – present
 Teaching Assistant | September 2020 – June 2021
 
 ### Key Tools
-Python & R · SQL · Power BI · Streamlit · Pandas · CRM (Zoho) · Docker · Git
+Python & R · SQL · Scikit-learn · Streamlit · Pandas · CRM (Zoho) · API · Git
 
 [Go to portfolio](portfolio.qmd)<br>
-[Download full CV](portfolio.qmd)<br>
+[Go to research](research_academic_work.qmd)<br>
+[Download full CV](files/resume_anna_pirogova.pdf)<br> 
 Contact me:![Contact](images/contact_info.png){width=400px}
 

@@ -1,0 +1,29 @@
+---
+title: "Certificates"
+format: html
+page-layout: full
+filters:
+  - lightbox
+---
+
+## Certificates
+
+Here are selected certificates from my training and professional development. You can **download the PDFs** or **verify them online** (if applicable).
+
+::: {.table-responsive}
+| Education Certificates | Issuer | Year | Hours | 📥 Download |🔗 Link |
+|-------------|--------|------|--------|----------|------|
+| Introduction to Object-Oriented Programming in Python | DataCamp | 2025 | 3 |[Download](certificates/Datacamp_Introduction_to_Object_Oriented_Programming_in_Python.pdf) |[View](https://www.datacamp.com/statement-of-accomplishment/course/df063e2facd7f38d3c3cb81be0d92b8b654f6ae0?raw=1)|
+| Data Structures and Algorithms in Python | DataCamp | 2025 | 4 |[Download](certificates/DataCamp_certificate_Data_Structures_and_Algorithms_in_Python.pdf) |[View](https://www.datacamp.com/completed/statement-of-accomplishment/course/41c2dfcd49fd01ba2107bbe687f9469247405b33)|
+| Associate Data Scientist in Python (Track) | DataCamp | 2025 | 90 | [Download](certificates/DataCamp_certificate_Associate_Data_Scientist_in_Python.pdf) | [View](https://www.datacamp.com/completed/statement-of-accomplishment/track/57d0fdbbbaf42e95418cb77c18d1bbf190c58267) |
+| Associate Data Analyst in SQL (Track) | DataCamp | 2025 | 39 | [Download](certificates/Datacamp_certificate_Associate_Data_Analyst_in_SQL.pdf) | [View](https://www.datacamp.com/completed/statement-of-accomplishment/track/83f5dad9dd9171515a3afb4c6d6f63d5ff9ed018) |
+| Interactive SQL Trainer (Course) | Stepik | 2025 | 24 | [Download](certificates/Stepik_certificate_Interactive_SQL.pdf) | [View](https://stepik.org/cert/2937980) |
+| Introduction to Data Science in Python (Course) | Coursera / Univ. of Michigan | 2023 | 30 | [Download](certificates/Coursera_python.pdf) | [View](https://www.coursera.org/account/accomplishments/verify/YAJDY83RD7WP) |
+| Data Processing and Analysis (Advanced Program) | Higher School of Economics | 2023 | 760 | [Download](certificates/HSE_data_analysis.pdf) | — |
+| SQL for Business Analysts (Track) | DataCamp | 2022 | 20 | [Download](certificates/DataCamp_certificate_SQL_for_Business_Analysts.pdf) | [View](https://www.datacamp.com/completed/statement-of-accomplishment/track/2a4da514fa3e2fb8cd5450e60f290aa53cb4866d) |
+| SQL Fundamentals (Track) | DataCamp | 2021 | 21 | [Download](certificates/DataCamp_certificate_SQL_Fundamentals.pdf) | [View](https://www.datacamp.com/completed/statement-of-accomplishment/track/9f21c6a9922c837cd676c8d8d59a3b6b2af75f71) |
+| Modeling with tidymodels in R (Course) | DataCamp | 2021 | 4 | [Download](certificates/tidymodels_r.pdf) | [View](https://www.datacamp.com/statement-of-accomplishment/course/16fb00f3124dd87f18a710dc95cd952204199432?raw=1) |
+| Unsupervised Learning in R (Course) | DataCamp | 2021 | 4 | [Download](certificates/unsupervised_r.pdf) | [View](https://www.datacamp.com/completed/statement-of-accomplishment/course/6e596a98f4a9a619a310d859a13ff3e3d830a369) |
+:::
+
+

@@ -49,7 +49,7 @@ page-layout: full
 
 <div class="project-desc">Fixed effects and double ML. Causal ML, heterogeneity analysis.</div>
 
-<div class="project-link">[Read more →](projects/thesis.qmd)</div>
+<div class="project-link">[Read more →](research_academic_work.qmd)</div>
 
 </div>
 :::

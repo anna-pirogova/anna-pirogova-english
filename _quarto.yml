@@ -10,8 +10,13 @@ website:
         href: index.qmd
       - text: Portfolio
         href: portfolio.qmd
+      - text: Certification
+        href: certificates.qmd
       - text: Research
         href: research_academic_work.qmd
+      - text: Contact
+        href: contact.qmd  
+        
   page-footer: 
     center: "© 2025 Anna Pirogova"
 
