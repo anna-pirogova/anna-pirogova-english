@@ -133,4 +133,4 @@ Keywords: job satisfaction, employee well-being, COVID-19, JD-R model, Russian w
 
 ## Want to Know More?
 
-If you're interested in the data, code, or collaboration around this research, feel free to contact me or view my [portfolio](portfolio.qmd).
+If you're interested in the data, code, or collaboration around this research, feel free to [contact me](contact.qmd) or view my [portfolio](portfolio.qmd).

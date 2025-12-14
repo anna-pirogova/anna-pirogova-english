@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>boardgame-bot – Anna Pirogova — Data Scientist &amp; Health Economist</title>
+<title>Telegram Bot: Board Game Recommendations – Anna Pirogova — Data Scientist &amp; Health Economist</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,6 +111,12 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://anna-pirogova.github.io/"> 
+<span class="menu-text">RU Русский</span></a>
+  </li>  
+</ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
@@ -121,15 +127,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">Project Overview</a></li>
+  <li><a href="#data-and-methods" id="toc-data-and-methods" class="nav-link" data-scroll-target="#data-and-methods">Data and Methods</a></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">boardgame-bot</h1>
+<h1 class="title">Telegram Bot: Board Game Recommendations</h1>
 </div>
 
 
@@ -146,8 +160,41 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="project-overview" class="level2">
+<h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
+<p>A Telegram bot was developed to recommend board games based on user interests. The bot is implemented in R and uses a content-based approach: recommendations are generated based on the similarity of games by key features. There is also a command to receive a random game from the dataset.</p>
+<p><a href="../reports/boardgame-bot-report.html">View the full report with code and analysis</a></p>
+</section>
+<section id="data-and-methods" class="level2">
+<h2 class="anchored" data-anchor-id="data-and-methods">Data and Methods</h2>
+<ul>
+<li>Data from GitHub: ~24 features, filtered and processed for 1000+ games<br>
+</li>
+<li>K-means clustering (12 clusters) and Gower distance used for similarity calculation<br>
+</li>
+<li>Recommendations based on a game difference matrix<br>
+</li>
+<li>Categories were merged and encoded (83 → 14)<br>
+</li>
+<li>Telegram bot supports <code>/recommend</code>, <code>/random</code>, <code>/help</code>, and <code>/start</code> commands</li>
+</ul>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>The bot provides relevant recommendations (expert evaluation)<br>
+</li>
+<li>Most popular games are strategic/card games (Cluster 2)<br>
+</li>
+<li>Longest duration games are war-themed (Cluster 9)<br>
+</li>
+<li>Interface tested, functionality confirmed<br>
+</li>
+<li>Hosting and UX improvements are needed for scaling</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

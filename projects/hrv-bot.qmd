@@ -1,5 +1,41 @@
 ---
-title: "hrv-bot"
+title: "Telegram-бот: recommendations for training based on HRV (Fitbit)"
 format: html
 ---
+## Project summary
+
+A personal **Telegram bot written in Python** that analyzes your **heart rate variability (HRV)** data daily, retrieved via the **Fitbit API**, and sends **training recommendations** based on your physiological readiness.
+
+[View the repository on Github](https://github.com/anna-pirogova/fitbit-hrv-telegram-bot)
+
+<img src="/images/telegram_bot_message_example1.png" width="50%">
+<img src="/images/telegram_bot_message_example2.png" width="50%">
+
+## What does the bot do?
+
+- Extracts HRV (RMSSD) data from your Fitbit device  
+- Compares it with your personal baseline and calculates deviations  
+- Sends a Telegram message with interpretation:
+  - Daytime and nighttime RMSSD
+  - Metric deviations from baseline
+  - Training recommendation: normal workout, intense session, or rest day
+
+> All calculations and message texts can be easily customized in the Python script.
+
+## What you need to run it
+
+### Required:
+- A Fitbit or Google Pixel Watch (Gen 1–4)
+- A Fitbit Developer Account
+- A registered personal app in the Fitbit portal
+- Python 3 installed
+- A Telegram bot (created via [@BotFather](https://t.me/BotFather))
+
+### Optional (for automatic notifications right after waking up):
+- A verified **subscriber** and **subscription** for sleep events in the Fitbit Web API
+- A public domain with HTTPS (e.g., via [DuckDNS](https://www.duckdns.org/))
+- A valid HTTPS certificate (via `certbot`)
+- A server with a **listener service** (webhook) to receive events from Fitbit
+
+For setup instructions, see the [GitHub repository](https://github.com/anna-pirogova/fitbit-hrv-telegram-bot)
 

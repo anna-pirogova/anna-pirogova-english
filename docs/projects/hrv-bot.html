@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>hrv-bot – Anna Pirogova — Data Scientist &amp; Health Economist</title>
+<title>Telegram-бот: recommendations for training based on HRV (Fitbit) – Anna Pirogova — Data Scientist &amp; Health Economist</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,6 +111,12 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://anna-pirogova.github.io/"> 
+<span class="menu-text">RU Русский</span></a>
+  </li>  
+</ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
@@ -121,15 +127,27 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#project-summary" id="toc-project-summary" class="nav-link active" data-scroll-target="#project-summary">Project summary</a></li>
+  <li><a href="#what-does-the-bot-do" id="toc-what-does-the-bot-do" class="nav-link" data-scroll-target="#what-does-the-bot-do">What does the bot do?</a></li>
+  <li><a href="#what-you-need-to-run-it" id="toc-what-you-need-to-run-it" class="nav-link" data-scroll-target="#what-you-need-to-run-it">What you need to run it</a>
+  <ul class="collapse">
+  <li><a href="#required" id="toc-required" class="nav-link" data-scroll-target="#required">Required:</a></li>
+  <li><a href="#optional-for-automatic-notifications-right-after-waking-up" id="toc-optional-for-automatic-notifications-right-after-waking-up" class="nav-link" data-scroll-target="#optional-for-automatic-notifications-right-after-waking-up">Optional (for automatic notifications right after waking up):</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">hrv-bot</h1>
+<h1 class="title">Telegram-бот: recommendations for training based on HRV (Fitbit)</h1>
 </div>
 
 
@@ -146,8 +164,55 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="project-summary" class="level2">
+<h2 class="anchored" data-anchor-id="project-summary">Project summary</h2>
+<p>A personal <strong>Telegram bot written in Python</strong> that analyzes your <strong>heart rate variability (HRV)</strong> data daily, retrieved via the <strong>Fitbit API</strong>, and sends <strong>training recommendations</strong> based on your physiological readiness.</p>
+<p><a href="https://github.com/anna-pirogova/fitbit-hrv-telegram-bot">View the repository on Github</a></p>
+<p><img src="../images/telegram_bot_message_example1.png" width="50%"> <img src="../images/telegram_bot_message_example2.png" width="50%"></p>
+</section>
+<section id="what-does-the-bot-do" class="level2">
+<h2 class="anchored" data-anchor-id="what-does-the-bot-do">What does the bot do?</h2>
+<ul>
+<li>Extracts HRV (RMSSD) data from your Fitbit device<br>
+</li>
+<li>Compares it with your personal baseline and calculates deviations<br>
+</li>
+<li>Sends a Telegram message with interpretation:
+<ul>
+<li>Daytime and nighttime RMSSD</li>
+<li>Metric deviations from baseline</li>
+<li>Training recommendation: normal workout, intense session, or rest day</li>
+</ul></li>
+</ul>
+<blockquote class="blockquote">
+<p>All calculations and message texts can be easily customized in the Python script.</p>
+</blockquote>
+</section>
+<section id="what-you-need-to-run-it" class="level2">
+<h2 class="anchored" data-anchor-id="what-you-need-to-run-it">What you need to run it</h2>
+<section id="required" class="level3">
+<h3 class="anchored" data-anchor-id="required">Required:</h3>
+<ul>
+<li>A Fitbit or Google Pixel Watch (Gen 1–4)</li>
+<li>A Fitbit Developer Account</li>
+<li>A registered personal app in the Fitbit portal</li>
+<li>Python 3 installed</li>
+<li>A Telegram bot (created via <a href="https://t.me/BotFather"><span class="citation" data-cites="BotFather">@BotFather</span></a>)</li>
+</ul>
+</section>
+<section id="optional-for-automatic-notifications-right-after-waking-up" class="level3">
+<h3 class="anchored" data-anchor-id="optional-for-automatic-notifications-right-after-waking-up">Optional (for automatic notifications right after waking up):</h3>
+<ul>
+<li>A verified <strong>subscriber</strong> and <strong>subscription</strong> for sleep events in the Fitbit Web API</li>
+<li>A public domain with HTTPS (e.g., via <a href="https://www.duckdns.org/">DuckDNS</a>)</li>
+<li>A valid HTTPS certificate (via <code>certbot</code>)</li>
+<li>A server with a <strong>listener service</strong> (webhook) to receive events from Fitbit</li>
+</ul>
+<p>For setup instructions, see the <a href="https://github.com/anna-pirogova/fitbit-hrv-telegram-bot">GitHub repository</a></p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

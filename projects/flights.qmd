@@ -1,0 +1,29 @@
+---
+title: "Airline Data Analysis"
+format: html
+---
+
+# 1. Project Overview
+
+## Objective
+
+Identify issues in the airline industry and suggest improvements based on data analysis.
+
+[View the full report with charts and analysis](../reports/flights-report.html)
+
+[View the dashboard](../reports/flights-dashboard.html)
+
+## Key Findings
+
+**1. Legroom comfort**  
+Top models: *Airbus 340-300, Boeing 777-200LR, etc.*  
+Worst: *Boeing 737-800, Airbus 340, etc.*  
+→ It's recommended to improve seating configurations for models with a comfort rating ≤ 2. Modify surveys to capture specific aircraft models.
+
+**2. Connecting flights**  
+Only 94 out of 1000 routes include a connection.  
+→ Add a question about connections to the survey to avoid relying solely on review text.
+
+**3. Lounge Wi-Fi vs Airport Wi-Fi**  
+Only 11 lounges received better Wi-Fi ratings than the airport itself.  
+→ Improve airp

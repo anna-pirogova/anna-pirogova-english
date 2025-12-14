@@ -98,32 +98,116 @@
     "text": "6.3 Interpretation of Groups\nThe simplified model identifies seven groups of projects with different probabilities of success:\n\nUnfavorable subcategories → unsuccessful\nFavorable subcategories → successful\nHigh goal (&gt;$31,000) → unsuccessful\nLong campaign (&gt;56 days) → unsuccessful\nLow goal (&lt;$1,418) → successful\nEvening/night launch → unsuccessful\nDaytime launch + moderate goal → successful"
   },
   {
-    "objectID": "projects/employee-churn.html",
-    "href": "projects/employee-churn.html",
-    "title": "R&D Employee Churn Analysis",
+    "objectID": "projects/flights.html",
+    "href": "projects/flights.html",
+    "title": "Airline Data Analysis",
     "section": "",
-    "text": "The project included an analysis of employee attrition factors in the strategically important Research & Development department. Data from an SQL database was used, combining the profile, portfolio, and education tables. A logistic regression model was built based on the processed and balanced data.\nOpen interactive dashboard\nView full report with code, graphs, and analysis"
+    "text": "Identify issues in the airline industry and suggest improvements based on data analysis.\nView the full report with charts and analysis\nView the dashboard\n\n\n\n1. Legroom comfort\nTop models: Airbus 340-300, Boeing 777-200LR, etc.\nWorst: Boeing 737-800, Airbus 340, etc.\n→ It’s recommended to improve seating configurations for models with a comfort rating ≤ 2. Modify surveys to capture specific aircraft models.\n2. Connecting flights\nOnly 94 out of 1000 routes include a connection.\n→ Add a question about connections to the survey to avoid relying solely on review text.\n3. Lounge Wi-Fi vs Airport Wi-Fi\nOnly 11 lounges received better Wi-Fi ratings than the airport itself.\n→ Improve airp"
   },
   {
-    "objectID": "projects/employee-churn.html#project-summary",
-    "href": "projects/employee-churn.html#project-summary",
-    "title": "R&D Employee Churn Analysis",
+    "objectID": "projects/flights.html#objective",
+    "href": "projects/flights.html#objective",
+    "title": "Airline Data Analysis",
     "section": "",
-    "text": "The project included an analysis of employee attrition factors in the strategically important Research & Development department. Data from an SQL database was used, combining the profile, portfolio, and education tables. A logistic regression model was built based on the processed and balanced data.\nOpen interactive dashboard\nView full report with code, graphs, and analysis"
+    "text": "Identify issues in the airline industry and suggest improvements based on data analysis.\nView the full report with charts and analysis\nView the dashboard"
   },
   {
-    "objectID": "projects/employee-churn.html#methods-and-features",
-    "href": "projects/employee-churn.html#methods-and-features",
-    "title": "R&D Employee Churn Analysis",
-    "section": "Methods and Features",
-    "text": "Methods and Features\n\nSQL queries to the database + preprocessing in R\nVisualization of distributions by gender, age, position, and salary\nLogistic regression with SMOTE for class balancing\nModel evaluation: accuracy 0.81, sensitivity 0.82\nModel interpretation using Odds Ratio and the influence of factors\nSimulations: the impact of reducing overtime and increasing satisfaction"
+    "objectID": "projects/flights.html#key-findings",
+    "href": "projects/flights.html#key-findings",
+    "title": "Airline Data Analysis",
+    "section": "",
+    "text": "1. Legroom comfort\nTop models: Airbus 340-300, Boeing 777-200LR, etc.\nWorst: Boeing 737-800, Airbus 340, etc.\n→ It’s recommended to improve seating configurations for models with a comfort rating ≤ 2. Modify surveys to capture specific aircraft models.\n2. Connecting flights\nOnly 94 out of 1000 routes include a connection.\n→ Add a question about connections to the survey to avoid relying solely on review text.\n3. Lounge Wi-Fi vs Airport Wi-Fi\nOnly 11 lounges received better Wi-Fi ratings than the airport itself.\n→ Improve airp"
   },
   {
-    "objectID": "projects/employee-churn.html#conclusions",
-    "href": "projects/employee-churn.html#conclusions",
-    "title": "R&D Employee Churn Analysis",
-    "section": "Conclusions",
-    "text": "Conclusions\nThe main factors increasing the risk of leaving: - overtime (OverTime = Yes) - frequent Business trips - dissatisfaction with work conditions and relationships - low engagement\nFactors that reduce the risk of attrition: - high engagement - high job satisfaction - doctoral degree\nSpecific measures were proposed: workload optimization, increasing engagement and the environment, the simulation of which reduced the predicted attrition by 22.4%."
+    "objectID": "projects/boardgame-bot.html",
+    "href": "projects/boardgame-bot.html",
+    "title": "Telegram Bot: Board Game Recommendations",
+    "section": "",
+    "text": "A Telegram bot was developed to recommend board games based on user interests. The bot is implemented in R and uses a content-based approach: recommendations are generated based on the similarity of games by key features. There is also a command to receive a random game from the dataset.\nView the full report with code and analysis"
+  },
+  {
+    "objectID": "projects/boardgame-bot.html#project-overview",
+    "href": "projects/boardgame-bot.html#project-overview",
+    "title": "Telegram Bot: Board Game Recommendations",
+    "section": "",
+    "text": "A Telegram bot was developed to recommend board games based on user interests. The bot is implemented in R and uses a content-based approach: recommendations are generated based on the similarity of games by key features. There is also a command to receive a random game from the dataset.\nView the full report with code and analysis"
+  },
+  {
+    "objectID": "projects/boardgame-bot.html#data-and-methods",
+    "href": "projects/boardgame-bot.html#data-and-methods",
+    "title": "Telegram Bot: Board Game Recommendations",
+    "section": "Data and Methods",
+    "text": "Data and Methods\n\nData from GitHub: ~24 features, filtered and processed for 1000+ games\n\nK-means clustering (12 clusters) and Gower distance used for similarity calculation\n\nRecommendations based on a game difference matrix\n\nCategories were merged and encoded (83 → 14)\n\nTelegram bot supports /recommend, /random, /help, and /start commands"
+  },
+  {
+    "objectID": "projects/boardgame-bot.html#key-takeaways",
+    "href": "projects/boardgame-bot.html#key-takeaways",
+    "title": "Telegram Bot: Board Game Recommendations",
+    "section": "Key Takeaways",
+    "text": "Key Takeaways\n\nThe bot provides relevant recommendations (expert evaluation)\n\nMost popular games are strategic/card games (Cluster 2)\n\nLongest duration games are war-themed (Cluster 9)\n\nInterface tested, functionality confirmed\n\nHosting and UX improvements are needed for scaling"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Anna Pirogova",
+    "section": "",
+    "text": "I’ve been working with data for over 4 years: analyzing, visualizing, and helping businesses make data-driven decisions. I use Python, R, and SQL as my primary tools.\n\nEducation\nIstanbul Technical University (ITÜ)| Türkiye | QS 326 Master’s in Economics | 2023–2025 | GPA: 3.75/4.0\nBoğaziçi University (Bogaziçi)| Türkiye | QS 371 Exchange in Business Administration | 2022–2023 | GPA: 3.42/4.0\nHSE University, St. Petersburg| Russia Bachelor’s in International Business and Management | 2019–2023 | GPA 8.86/10 Minor: Data Science | 2019-2022 Diploma with honors | Average GPA: 8.86/10\n\n\nWork Experience\nPASV (EdTech startup, California, USA / remote) Data & CRM Analytics Specialist | May 2021 – present\nHSE University, St. Petersburg, Russia Teaching Assistant | September 2020 – June 2021\n\n\nKey Tools\nPython & R · SQL · Scikit-learn · Streamlit · Pandas · CRM (Zoho) · API · Git\nGo to portfolio Go to research Download full CV Contact me:"
+  },
+  {
+    "objectID": "certificates.html",
+    "href": "certificates.html",
+    "title": "Certificates",
+    "section": "",
+    "text": "Here are selected certificates from my training and professional development. You can download the PDFs or verify them online (if applicable).\n\n\n\n\nEducation Certificates\nIssuer\nYear\nHours\n📥 Download\n🔗 Link\n\n\n\n\nIntroduction to Object-Oriented Programming in Python\nDataCamp\n2025\n3\nDownload\nView\n\n\nData Structures and Algorithms in Python\nDataCamp\n2025\n4\nDownload\nView\n\n\nAssociate Data Scientist in Python (Track)\nDataCamp\n2025\n90\nDownload\nView\n\n\nAssociate Data Analyst in SQL (Track)\nDataCamp\n2025\n39\nDownload\nView\n\n\nInteractive SQL Trainer (Course)\nStepik\n2025\n24\nDownload\nView\n\n\nIntroduction to Data Science in Python (Course)\nCoursera / Univ. of Michigan\n2023\n30\nDownload\nView\n\n\nData Processing and Analysis (Advanced Program)\nHigher School of Economics\n2023\n760\nDownload\n—\n\n\nSQL for Business Analysts (Track)\nDataCamp\n2022\n20\nDownload\nView\n\n\nSQL Fundamentals (Track)\nDataCamp\n2021\n21\nDownload\nView\n\n\nModeling with tidymodels in R (Course)\nDataCamp\n2021\n4\nDownload\nView\n\n\nUnsupervised Learning in R (Course)\nDataCamp\n2021\n4\nDownload\nView"
+  },
+  {
+    "objectID": "certificates.html#certificates",
+    "href": "certificates.html#certificates",
+    "title": "Certificates",
+    "section": "",
+    "text": "Here are selected certificates from my training and professional development. You can download the PDFs or verify them online (if applicable).\n\n\n\n\nEducation Certificates\nIssuer\nYear\nHours\n📥 Download\n🔗 Link\n\n\n\n\nIntroduction to Object-Oriented Programming in Python\nDataCamp\n2025\n3\nDownload\nView\n\n\nData Structures and Algorithms in Python\nDataCamp\n2025\n4\nDownload\nView\n\n\nAssociate Data Scientist in Python (Track)\nDataCamp\n2025\n90\nDownload\nView\n\n\nAssociate Data Analyst in SQL (Track)\nDataCamp\n2025\n39\nDownload\nView\n\n\nInteractive SQL Trainer (Course)\nStepik\n2025\n24\nDownload\nView\n\n\nIntroduction to Data Science in Python (Course)\nCoursera / Univ. of Michigan\n2023\n30\nDownload\nView\n\n\nData Processing and Analysis (Advanced Program)\nHigher School of Economics\n2023\n760\nDownload\n—\n\n\nSQL for Business Analysts (Track)\nDataCamp\n2022\n20\nDownload\nView\n\n\nSQL Fundamentals (Track)\nDataCamp\n2021\n21\nDownload\nView\n\n\nModeling with tidymodels in R (Course)\nDataCamp\n2021\n4\nDownload\nView\n\n\nUnsupervised Learning in R (Course)\nDataCamp\n2021\n4\nDownload\nView"
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact",
+    "section": "",
+    "text": "If you’d like to get in touch, feel free to reach out via the platforms below:\n\n\n\n\n\n\n\nGitHub\nLinkedIn"
+  },
+  {
+    "objectID": "contact.html#lets-connect",
+    "href": "contact.html#lets-connect",
+    "title": "Contact",
+    "section": "",
+    "text": "If you’d like to get in touch, feel free to reach out via the platforms below:\n\n\n\n\n\n\n\nGitHub\nLinkedIn"
+  },
+  {
+    "objectID": "portfolio.html",
+    "href": "portfolio.html",
+    "title": "Portfolio",
+    "section": "",
+    "text": "Comic book recommendation system\n\n\nCollaborative filtering (ALS, user-item matrix, RMSE estimation).\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nR&D Employee Churn Analysis\n\n\nSQL + R analysis: table joins, visualization, and logistic regression. Key churn factors (overtime, business trips) identified, HR dashboard.\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nFE Models & Double ML (Master’s Thesis)\n\n\nFixed effects and double ML. Causal ML, heterogeneity analysis.\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nKickstarter Data Analysis\n\n\nPredicting Project Success\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nAnalysis of Airline Data\n\n\nA Study of Lounge and Aircraft Ratings.\n\n\nRead more →"
+  },
+  {
+    "objectID": "portfolio.html#machine-learning-and-modelling",
+    "href": "portfolio.html#machine-learning-and-modelling",
+    "title": "Portfolio",
+    "section": "",
+    "text": "Comic book recommendation system\n\n\nCollaborative filtering (ALS, user-item matrix, RMSE estimation).\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nR&D Employee Churn Analysis\n\n\nSQL + R analysis: table joins, visualization, and logistic regression. Key churn factors (overtime, business trips) identified, HR dashboard.\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nFE Models & Double ML (Master’s Thesis)\n\n\nFixed effects and double ML. Causal ML, heterogeneity analysis.\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nKickstarter Data Analysis\n\n\nPredicting Project Success\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nAnalysis of Airline Data\n\n\nA Study of Lounge and Aircraft Ratings.\n\n\nRead more →"
+  },
+  {
+    "objectID": "portfolio.html#dashboards",
+    "href": "portfolio.html#dashboards",
+    "title": "Portfolio",
+    "section": "Dashboards",
+    "text": "Dashboards\n\n\n\n\n\n\nInteractive Recovery Dashboard (Sleep, HRV, Stress) with AI Insights\n\n\nAn interactive dashboard built with Streamlit. Automatically generates interpretations using a large language model (LLM). Recommended to open on desktop.\n\n\nView Dashboard →\n\n\n\n\n\n\n\n\n\nInteractive Dashboard: R&D Employee Attrition\n\n\nInteractive dashboard, created with Shiny.\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nDeal Length Analysis: Dashboard\n\n\nDeal Length Dashboard: Calculates averages, displays line and bar charts. Data anonymized to preserve privacy. Created in Zoho Analytics.\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nKickstarter Dashboard\n\n\nVisualization of project success by category, launch time, and name.\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nDashboard: Air Travel\n\n\nA study of lounge and aircraft ratings.\n\n\nRead more →"
+  },
+  {
+    "objectID": "portfolio.html#bots-and-automation",
+    "href": "portfolio.html#bots-and-automation",
+    "title": "Portfolio",
+    "section": "Bots and automation",
+    "text": "Bots and automation\n\n\n\n\n\n\nTelegram bot: board game recommendations\n\n\nBot in R with inline mode, game database, filtering by genre\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nTelegram bot: daily fitness based on HRV\n\n\nFitbit API integration, training fitness calculation, Telegram notifications.\n\n\nRead more →"
   },
   {
     "objectID": "projects/comics-rec.html",
@@ -161,67 +245,60 @@
     "text": "Conclusions\n\nThe results of the network analysis showed that it was not useful for recommendation, so it was decided not to use it.\nA formal evaluation of collaborative filtering showed that the model built using the UBCF method performed better than the IBCF, as it had lower RMSE, MSE, and MAE values. Therefore, we used it to create the function. - By comparing the characteristics (validation) of comics that users liked and those recommended by the content-based system, we concluded that the content-based system worked well.\nBased on internal user ratings, the content-based system performed better in recommending comics than the collaborative filtering: the publisher names and user-generated shelves were the same as those that the user rated highly."
   },
   {
-    "objectID": "portfolio.html",
-    "href": "portfolio.html",
-    "title": "Portfolio",
+    "objectID": "projects/employee-churn.html",
+    "href": "projects/employee-churn.html",
+    "title": "R&D Employee Churn Analysis",
     "section": "",
-    "text": "Comic book recommendation system\n\n\nCollaborative filtering (ALS, user-item matrix, RMSE estimation).\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nR&D Employee Churn Analysis\n\n\nSQL + R analysis: table joins, visualization, and logistic regression. Key churn factors (overtime, business trips) identified, HR dashboard.\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nFE Models & Double ML (Master’s Thesis)\n\n\nFixed effects and double ML. Causal ML, heterogeneity analysis.\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nKickstarter Data Analysis\n\n\nPredicting Project Success\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nAnalysis of Airline Data\n\n\nA Study of Lounge and Aircraft Ratings.\n\n\nRead more →"
+    "text": "The project included an analysis of employee attrition factors in the strategically important Research & Development department. Data from an SQL database was used, combining the profile, portfolio, and education tables. A logistic regression model was built based on the processed and balanced data.\nOpen interactive dashboard\nView full report with code, graphs, and analysis"
   },
   {
-    "objectID": "portfolio.html#machine-learning-and-modelling",
-    "href": "portfolio.html#machine-learning-and-modelling",
-    "title": "Portfolio",
+    "objectID": "projects/employee-churn.html#project-summary",
+    "href": "projects/employee-churn.html#project-summary",
+    "title": "R&D Employee Churn Analysis",
     "section": "",
-    "text": "Comic book recommendation system\n\n\nCollaborative filtering (ALS, user-item matrix, RMSE estimation).\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nR&D Employee Churn Analysis\n\n\nSQL + R analysis: table joins, visualization, and logistic regression. Key churn factors (overtime, business trips) identified, HR dashboard.\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nFE Models & Double ML (Master’s Thesis)\n\n\nFixed effects and double ML. Causal ML, heterogeneity analysis.\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nKickstarter Data Analysis\n\n\nPredicting Project Success\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nAnalysis of Airline Data\n\n\nA Study of Lounge and Aircraft Ratings.\n\n\nRead more →"
+    "text": "The project included an analysis of employee attrition factors in the strategically important Research & Development department. Data from an SQL database was used, combining the profile, portfolio, and education tables. A logistic regression model was built based on the processed and balanced data.\nOpen interactive dashboard\nView full report with code, graphs, and analysis"
   },
   {
-    "objectID": "portfolio.html#dashboards",
-    "href": "portfolio.html#dashboards",
-    "title": "Portfolio",
-    "section": "Dashboards",
-    "text": "Dashboards\n\n\n\n\n\n\nInteractive Dashboard: R&D Employee Attrition\n\n\nInteractive dashboard, created with Shiny.\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nDeal Length Analysis: Dashboard\n\n\nDeal Length Dashboard: Calculates averages, displays line and bar charts. Data anonymized to preserve privacy. Created in Zoho Analytics.\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nKickstarter Dashboard\n\n\nVisualization of project success by category, launch time, and name.\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nDashboard: Air Travel\n\n\nA study of lounge and aircraft ratings.\n\n\nRead more →"
+    "objectID": "projects/employee-churn.html#methods-and-features",
+    "href": "projects/employee-churn.html#methods-and-features",
+    "title": "R&D Employee Churn Analysis",
+    "section": "Methods and Features",
+    "text": "Methods and Features\n\nSQL queries to the database + preprocessing in R\nVisualization of distributions by gender, age, position, and salary\nLogistic regression with SMOTE for class balancing\nModel evaluation: accuracy 0.81, sensitivity 0.82\nModel interpretation using Odds Ratio and the influence of factors\nSimulations: the impact of reducing overtime and increasing satisfaction"
   },
   {
-    "objectID": "portfolio.html#bots-and-automation",
-    "href": "portfolio.html#bots-and-automation",
-    "title": "Portfolio",
-    "section": "Bots and automation",
-    "text": "Bots and automation\n\n\n\n\n\n\nTelegram bot: board game recommendations\n\n\nBot in R with inline mode, game database, filtering by genre\n\n\nRead more →\n\n\n\n\n\n\n\n\n\nTelegram bot: daily fitness based on HRV\n\n\nFitbit API integration, training fitness calculation, Telegram notifications.\n\n\nRead more →"
+    "objectID": "projects/employee-churn.html#conclusions",
+    "href": "projects/employee-churn.html#conclusions",
+    "title": "R&D Employee Churn Analysis",
+    "section": "Conclusions",
+    "text": "Conclusions\nThe main factors increasing the risk of leaving: - overtime (OverTime = Yes) - frequent Business trips - dissatisfaction with work conditions and relationships - low engagement\nFactors that reduce the risk of attrition: - high engagement - high job satisfaction - doctoral degree\nSpecific measures were proposed: workload optimization, increasing engagement and the environment, the simulation of which reduced the predicted attrition by 22.4%."
   },
   {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contact",
+    "objectID": "projects/hrv-bot.html",
+    "href": "projects/hrv-bot.html",
+    "title": "Telegram-бот: recommendations for training based on HRV (Fitbit)",
     "section": "",
-    "text": "If you’d like to get in touch, feel free to reach out via the platforms below:\n\n\n\n\n\n\n\nGitHub\nLinkedIn"
+    "text": "A personal Telegram bot written in Python that analyzes your heart rate variability (HRV) data daily, retrieved via the Fitbit API, and sends training recommendations based on your physiological readiness.\nView the repository on Github"
   },
   {
-    "objectID": "contact.html#lets-connect",
-    "href": "contact.html#lets-connect",
-    "title": "Contact",
+    "objectID": "projects/hrv-bot.html#project-summary",
+    "href": "projects/hrv-bot.html#project-summary",
+    "title": "Telegram-бот: recommendations for training based on HRV (Fitbit)",
     "section": "",
-    "text": "If you’d like to get in touch, feel free to reach out via the platforms below:\n\n\n\n\n\n\n\nGitHub\nLinkedIn"
+    "text": "A personal Telegram bot written in Python that analyzes your heart rate variability (HRV) data daily, retrieved via the Fitbit API, and sends training recommendations based on your physiological readiness.\nView the repository on Github"
   },
   {
-    "objectID": "certificates.html",
-    "href": "certificates.html",
-    "title": "Certificates",
-    "section": "",
-    "text": "Here are selected certificates from my training and professional development. You can download the PDFs or verify them online (if applicable).\n\n\n\n\nEducation Certificates\nIssuer\nYear\nHours\n📥 Download\n🔗 Link\n\n\n\n\nIntroduction to Object-Oriented Programming in Python\nDataCamp\n2025\n3\nDownload\nView\n\n\nData Structures and Algorithms in Python\nDataCamp\n2025\n4\nDownload\nView\n\n\nAssociate Data Scientist in Python (Track)\nDataCamp\n2025\n90\nDownload\nView\n\n\nAssociate Data Analyst in SQL (Track)\nDataCamp\n2025\n39\nDownload\nView\n\n\nInteractive SQL Trainer (Course)\nStepik\n2025\n24\nDownload\nView\n\n\nIntroduction to Data Science in Python (Course)\nCoursera / Univ. of Michigan\n2023\n30\nDownload\nView\n\n\nData Processing and Analysis (Advanced Program)\nHigher School of Economics\n2023\n760\nDownload\n—\n\n\nSQL for Business Analysts (Track)\nDataCamp\n2022\n20\nDownload\nView\n\n\nSQL Fundamentals (Track)\nDataCamp\n2021\n21\nDownload\nView\n\n\nModeling with tidymodels in R (Course)\nDataCamp\n2021\n4\nDownload\nView\n\n\nUnsupervised Learning in R (Course)\nDataCamp\n2021\n4\nDownload\nView"
+    "objectID": "projects/hrv-bot.html#what-does-the-bot-do",
+    "href": "projects/hrv-bot.html#what-does-the-bot-do",
+    "title": "Telegram-бот: recommendations for training based on HRV (Fitbit)",
+    "section": "What does the bot do?",
+    "text": "What does the bot do?\n\nExtracts HRV (RMSSD) data from your Fitbit device\n\nCompares it with your personal baseline and calculates deviations\n\nSends a Telegram message with interpretation:\n\nDaytime and nighttime RMSSD\nMetric deviations from baseline\nTraining recommendation: normal workout, intense session, or rest day\n\n\n\nAll calculations and message texts can be easily customized in the Python script."
   },
   {
-    "objectID": "certificates.html#certificates",
-    "href": "certificates.html#certificates",
-    "title": "Certificates",
-    "section": "",
-    "text": "Here are selected certificates from my training and professional development. You can download the PDFs or verify them online (if applicable).\n\n\n\n\nEducation Certificates\nIssuer\nYear\nHours\n📥 Download\n🔗 Link\n\n\n\n\nIntroduction to Object-Oriented Programming in Python\nDataCamp\n2025\n3\nDownload\nView\n\n\nData Structures and Algorithms in Python\nDataCamp\n2025\n4\nDownload\nView\n\n\nAssociate Data Scientist in Python (Track)\nDataCamp\n2025\n90\nDownload\nView\n\n\nAssociate Data Analyst in SQL (Track)\nDataCamp\n2025\n39\nDownload\nView\n\n\nInteractive SQL Trainer (Course)\nStepik\n2025\n24\nDownload\nView\n\n\nIntroduction to Data Science in Python (Course)\nCoursera / Univ. of Michigan\n2023\n30\nDownload\nView\n\n\nData Processing and Analysis (Advanced Program)\nHigher School of Economics\n2023\n760\nDownload\n—\n\n\nSQL for Business Analysts (Track)\nDataCamp\n2022\n20\nDownload\nView\n\n\nSQL Fundamentals (Track)\nDataCamp\n2021\n21\nDownload\nView\n\n\nModeling with tidymodels in R (Course)\nDataCamp\n2021\n4\nDownload\nView\n\n\nUnsupervised Learning in R (Course)\nDataCamp\n2021\n4\nDownload\nView"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Anna Pirogova",
-    "section": "",
-    "text": "I’ve been working with data for over 4 years: analyzing, visualizing, and helping businesses make data-driven decisions. I use Python, R, and SQL as my primary tools.\n\nEducation\nIstanbul Technical University (ITÜ)| Türkiye | QS 326 Master’s in Economics | 2023–2025 | GPA: 3.75/4.0\nBoğaziçi University (Bogaziçi)| Türkiye | QS 371 Exchange in Business Administration | 2022–2023 | GPA: 3.42/4.0\nHSE University, St. Petersburg| Russia Bachelor’s in International Business and Management | 2019–2023 | GPA 8.86/10 Minor: Data Science | 2019-2022 Diploma with honors | Average GPA: 8.86/10\n\n\nWork Experience\nPASV (EdTech startup, California, USA / remote) Data & CRM Analytics Specialist | May 2021 – present\nHSE University, St. Petersburg, Russia Teaching Assistant | September 2020 – June 2021\n\n\nKey Tools\nPython & R · SQL · Scikit-learn · Streamlit · Pandas · CRM (Zoho) · API · Git\nGo to portfolio Go to research Download full CV Contact me:"
+    "objectID": "projects/hrv-bot.html#what-you-need-to-run-it",
+    "href": "projects/hrv-bot.html#what-you-need-to-run-it",
+    "title": "Telegram-бот: recommendations for training based on HRV (Fitbit)",
+    "section": "What you need to run it",
+    "text": "What you need to run it\n\nRequired:\n\nA Fitbit or Google Pixel Watch (Gen 1–4)\nA Fitbit Developer Account\nA registered personal app in the Fitbit portal\nPython 3 installed\nA Telegram bot (created via @BotFather)\n\n\n\nOptional (for automatic notifications right after waking up):\n\nA verified subscriber and subscription for sleep events in the Fitbit Web API\nA public domain with HTTPS (e.g., via DuckDNS)\nA valid HTTPS certificate (via certbot)\nA server with a listener service (webhook) to receive events from Fitbit\n\nFor setup instructions, see the GitHub repository"
   },
   {
     "objectID": "reports/kickstarter-code.html",

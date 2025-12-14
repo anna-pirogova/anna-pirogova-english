@@ -1,5 +1,26 @@
 ---
-title: "boardgame-bot"
+title: "Telegram Bot: Board Game Recommendations"
 format: html
 ---
 
+## Project Overview
+
+A Telegram bot was developed to recommend board games based on user interests. The bot is implemented in R and uses a content-based approach: recommendations are generated based on the similarity of games by key features. There is also a command to receive a random game from the dataset.
+
+[View the full report with code and analysis](../reports/boardgame-bot-report.html)
+
+## Data and Methods
+
+- Data from GitHub: ~24 features, filtered and processed for 1000+ games  
+- K-means clustering (12 clusters) and Gower distance used for similarity calculation  
+- Recommendations based on a game difference matrix  
+- Categories were merged and encoded (83 → 14)  
+- Telegram bot supports `/recommend`, `/random`, `/help`, and `/start` commands
+
+## Key Takeaways
+
+- The bot provides relevant recommendations (expert evaluation)  
+- Most popular games are strategic/card games (Cluster 2)  
+- Longest duration games are war-themed (Cluster 9)  
+- Interface tested, functionality confirmed  
+- Hosting and UX improvements are needed for scaling
