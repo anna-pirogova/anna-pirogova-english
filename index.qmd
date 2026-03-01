@@ -28,8 +28,11 @@ Minor: Data Science | 2019-2022<br>
 Diploma with honors | Average GPA: 8.86/10
 
 ### Work Experience
+**Megafon (Telecom Industry)**, Moscow, Russia<br>
+Data Science Intern "Machine Learning and big data analysis" | February 2026 - present
+
 **PASV (EdTech startup, California, USA / remote)**<br>
-Data & CRM Analytics Specialist | May 2021 – present
+Data & CRM Analytics Specialist | May 2021 – January 2026
 
 **HSE University**, St. Petersburg, Russia<br>
 Teaching Assistant | September 2020 – June 2021
