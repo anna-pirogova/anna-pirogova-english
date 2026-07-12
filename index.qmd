@@ -13,7 +13,7 @@ about:
       text: LinkedIn
       href: https://www.linkedin.com/in/anna-pirogova/
 ---
-I've been working with data for over 4 years: analyzing, visualizing, and helping businesses make data-driven decisions. I use Python, R, and SQL as my primary tools.
+I've been working with data for over 4 years: analyzing, visualizing, and helping businesses make data-driven decisions. I use Python, PySpark, and SQL as my primary tools.
 
 ### Education
 **Istanbul Technical University (ITÜ)**| Türkiye | QS 326<br>
@@ -29,7 +29,10 @@ Diploma with honors | Average GPA: 8.86/10
 
 ### Work Experience
 **Megafon (Telecom Industry)**, Moscow, Russia<br>
-Data Science Intern "Machine Learning and big data analysis" | February 2026 - present
+Machine Learning Specialist | May 2026 - present
+
+**Megafon (Telecom Industry)**, Moscow, Russia<br>
+Data Science Intern "Machine Learning and big data analysis" | February 2026 - May 2026
 
 **PASV (EdTech startup, California, USA / remote)**<br>
 Data & CRM Analytics Specialist | May 2021 – January 2026
@@ -38,7 +41,7 @@ Data & CRM Analytics Specialist | May 2021 – January 2026
 Teaching Assistant | September 2020 – June 2021
 
 ### Key Tools
-Python & R · SQL · Scikit-learn · Streamlit · Pandas · CRM (Zoho) · API · Git
+Python & R · PySpark · Scikit-learn · Streamlit · Pandas · SQL · API · Git
 
 [Go to portfolio](portfolio.qmd)<br>
 [Go to research](research_academic_work.qmd)<br>

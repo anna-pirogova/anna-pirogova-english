@@ -3,7 +3,7 @@ title: "Unfolding Wines to 2D: how wines dataset looks like in 2D-11D prime spac
 format: html
 ---
 
-In this project we use first 11 prime numbers as axes and project the features of wine dataset on these prime axes. After that we visualize how our wines look like from 2D up to 11D so-called 'primes space' using UMAP and matplotlib. By 2D we mean that only first 2 prime numbers are used, while 11D means that all 11 prime numbers were used as axes. We use UMAP to be able to view the plot in 2D. For 3D interactive visualization please look at [another page →](unfolding-wines-3D.qmd).
+In this project we use first 11 prime numbers as axes and project the features of wine dataset on these prime axes. After that we visualize how our wines look like from 2D up to 11D so-called 'primes space' using UMAP and matplotlib. By 2D we mean that only first 2 prime numbers are used, while 11D means that all 11 prime numbers were used as axes. We use UMAP to be able to view the plot in 2D. For 3D interactive visualization please look at [another page →](unfolding-wines-3D.qmd). For clustering quality please, [visit this page →](unfolding-wines-clustering-quality.qmd).
 
 In my opinion, the shapes of wine clusters are very interesting as we go up to 11D! Plots are interactive and you can move inside the visualization to see from different anagles.
 

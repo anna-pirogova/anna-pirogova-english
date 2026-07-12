@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Unfolding Wines to 2D: how wines dataset looks like in 2D-11D prime space? – Anna Pirogova — Data Scientist &amp; Health Economist</title>
+<title>Unfolding Wines - Evaluating Clustering Quality with Wines in Prime Space – Anna Pirogova — Data Scientist &amp; Health Economist</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -169,7 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Unfolding Wines to 2D: how wines dataset looks like in 2D-11D prime space?</h1>
+<h1 class="title">Unfolding Wines - Evaluating Clustering Quality with Wines in Prime Space</h1>
 </div>
 
 
@@ -186,188 +186,144 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In this project we use first 11 prime numbers as axes and project the features of wine dataset on these prime axes. After that we visualize how our wines look like from 2D up to 11D so-called ‘primes space’ using UMAP and matplotlib. By 2D we mean that only first 2 prime numbers are used, while 11D means that all 11 prime numbers were used as axes. We use UMAP to be able to view the plot in 2D. For 3D interactive visualization please look at <a href="../reports/unfolding-wines-3D.html">another page →</a>. For clustering quality please, <a href="../reports/unfolding-wines-clustering-quality.html">visit this page →</a>.</p>
-<p>In my opinion, the shapes of wine clusters are very interesting as we go up to 11D! Plots are interactive and you can move inside the visualization to see from different anagles.</p>
-<p>Important note: this is an my own experiment, therefore there will neither be any mathematical formal notation nor theoretical proofs about prime space. I leave that work to mathematicians if they wish to formalize this framework :)</p>
-<div id="3c6b01af" class="cell" data-execution_count="1">
+<p>We evaluate how the structure of the Wine dataset changes in clustering performance as we embed it into increasingly higher-dimensional spaces using a prime-logarithmic encoding. Each feature value is projected onto a basis of logarithms of the first d prime numbers (for d from 2 to 11), transforming the original 13D data into dense representations of growing dimensionality (e.g., 26D, 39D, …, 143D).</p>
+<p>After projection, UMAP reduces the data to 3D (or 6D for the highest case), followed by KMeans clustering. We compute the Adjusted Rand Index (ARI) and Silhouette Score at each step to measure preservation of class structure and cluster quality.</p>
+<p>We see that prime-encoded representations consistently yield much higher Silhouette Scores—peaking at 0.708 for 6D primes—suggesting significantly better cluster separation. ARI remains strong across dimensions, with a peak of 0.911 at 11D.</p>
+<div id="9fc481aa" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fractions <span class="im">import</span> Fraction</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> lsq_linear</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_wine</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> umap <span class="im">import</span> UMAP</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Wine dataset</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> load_wine()</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>X_raw <span class="op">=</span> dataset.data</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> dataset.target</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>n_samples, n_features <span class="op">=</span> X_raw.shape</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># First 11 prime numbers</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>prime_list <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">17</span>, <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">29</span>, <span class="dv">31</span>]</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>log_primes <span class="op">=</span> np.log(prime_list)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fractions <span class="im">import</span> Fraction</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> lsq_linear</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_wine</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> adjusted_rand_score, silhouette_score</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> umap <span class="im">import</span> UMAP</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Load Data &amp; Setup</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> load_wine()</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>X_raw <span class="op">=</span> dataset.data</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>y_true <span class="op">=</span> dataset.target</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Scalar projection</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> project_scalar(val, log_basis, bounds<span class="op">=</span>(<span class="op">-</span><span class="dv">6</span>, <span class="dv">6</span>)):</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        log_target <span class="op">=</span> np.log(<span class="bu">float</span>(val))</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        res <span class="op">=</span> lsq_linear(log_basis.reshape(<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>), [log_target], bounds<span class="op">=</span>bounds, lsmr_tol<span class="op">=</span><span class="st">'auto'</span>)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> res.x</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.zeros(<span class="bu">len</span>(log_basis))</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Full dataset projection</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> project_dataset_prime_space(X_raw, dim):</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    basis <span class="op">=</span> log_primes[:dim]</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    X_frac <span class="op">=</span> np.vectorize(Fraction)(X_raw)</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    projected <span class="op">=</span> []</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> sample <span class="kw">in</span> tqdm(X_frac, desc<span class="op">=</span><span class="ss">f"Projecting to Prime </span><span class="sc">{</span>dim<span class="sc">}</span><span class="ss">D Space"</span>):</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        sample_proj <span class="op">=</span> []</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> val <span class="kw">in</span> sample:</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>            vec <span class="op">=</span> project_scalar(val, basis)</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>            sample_proj.extend(vec)</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>        projected.append(sample_proj)</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(projected)</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting function</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_umap(X, y, title):</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    umap_2D <span class="op">=</span> UMAP(n_components<span class="op">=</span><span class="dv">3</span>, random_state<span class="op">=</span><span class="dv">7</span>)</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    X_umap <span class="op">=</span> umap_2D.fit_transform(X)</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">6</span>))</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    plt.scatter(X_umap[:, <span class="dv">0</span>], X_umap[:, <span class="dv">1</span>], c<span class="op">=</span>y, cmap<span class="op">=</span><span class="st">'viridis'</span>, s<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    plt.title(title)</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">"UMAP 1"</span>)</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">"UMAP 2"</span>)</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    plt.grid(<span class="va">True</span>)</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># First 11 primes</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>prime_list <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">17</span>, <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">29</span>, <span class="dv">31</span>]</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>log_primes <span class="op">=</span> np.log(prime_list)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Scalar projection function</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> project_scalar(val, log_basis, bounds<span class="op">=</span>(<span class="op">-</span><span class="dv">6</span>, <span class="dv">6</span>)):</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        log_target <span class="op">=</span> np.log(<span class="bu">float</span>(val))</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        res <span class="op">=</span> lsq_linear(log_basis.reshape(<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>), [log_target], bounds<span class="op">=</span>bounds, lsmr_tol<span class="op">=</span><span class="st">'auto'</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> res.x</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.zeros(<span class="bu">len</span>(log_basis))</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Full dataset projection into prime space</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> project_dataset_prime_space(X_raw, dim):</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    basis <span class="op">=</span> log_primes[:dim]</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    projected <span class="op">=</span> []</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    X_frac <span class="op">=</span> np.vectorize(Fraction)(X_raw)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> sample <span class="kw">in</span> X_frac:</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>        sample_proj <span class="op">=</span> []</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> val <span class="kw">in</span> sample:</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>            vec <span class="op">=</span> project_scalar(val, basis)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>            sample_proj.extend(vec)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>        projected.append(sample_proj)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(projected)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Evaluate Across Prime Dimensions</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate raw data first</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>X_scaled <span class="op">=</span> scaler.fit_transform(X_raw)</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">3</span>, random_state<span class="op">=</span><span class="dv">42</span>, n_init<span class="op">=</span><span class="st">'auto'</span>)</span>
 <span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Raw data UMAP</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>plot_umap(X_raw, y, <span class="st">"UMAP on Raw Wine Data (13D)"</span>)</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="co"># Prime projections from 2D to 11D</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dim <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">12</span>):</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    X_prime <span class="op">=</span> project_dataset_prime_space(X_raw, dim)</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    total_dim <span class="op">=</span> dim <span class="op">*</span> n_features</span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    plot_umap(X_prime, y, <span class="ss">f"UMAP of Prime </span><span class="sc">{</span>dim<span class="sc">}</span><span class="ss">D Projection (</span><span class="sc">{</span>total_dim<span class="sc">}</span><span class="ss">D)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>y_pred_raw <span class="op">=</span> kmeans.fit_predict(X_scaled)</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>ari_raw <span class="op">=</span> adjusted_rand_score(y_true, y_pred_raw)</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>sil_raw <span class="op">=</span> silhouette_score(X_scaled, y_pred_raw)</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>results.append({</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Dimension"</span>: <span class="st">"Raw (13D)"</span>,</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Features"</span>: <span class="dv">13</span>,</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ARI"</span>: ari_raw,</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Silhouette"</span>: sil_raw</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="co"># Now evaluate prime projections from 2D to 11D</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dim <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">12</span>):</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Project to prime-dim space</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>    X_prime <span class="op">=</span> project_dataset_prime_space(X_raw, dim)</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>    total_features <span class="op">=</span> dim <span class="op">*</span> X_raw.shape[<span class="dv">1</span>]  <span class="co"># e.g., 2 * 13 = 26D</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Reduce via UMAP (use 3 components unless dim==11 → use 6)</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>    umap_dim <span class="op">=</span> <span class="dv">6</span> <span class="cf">if</span> dim <span class="op">==</span> <span class="dv">11</span> <span class="cf">else</span> <span class="dv">3</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>    umap_model <span class="op">=</span> UMAP(n_components<span class="op">=</span>umap_dim, random_state<span class="op">=</span><span class="dv">7</span>)</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>    X_umap <span class="op">=</span> umap_model.fit_transform(X_prime)</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Cluster</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> kmeans.fit_predict(X_umap)</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Metrics</span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>    ari <span class="op">=</span> adjusted_rand_score(y_true, y_pred)</span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>    sil <span class="op">=</span> silhouette_score(X_umap, y_pred)</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    results.append({</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Dimension"</span>: <span class="ss">f"Prime </span><span class="sc">{</span>dim<span class="sc">}</span><span class="ss">D"</span>,</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Features"</span>: total_features,</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>        <span class="st">"ARI"</span>: ari,</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Silhouette"</span>: sil</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Display Compact Results Table</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------------------</span></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>results_df <span class="op">=</span> pd.DataFrame(results)</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.precision'</span>, <span class="dv">3</span>)</span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"\Clustering Performance vs. Feature Space Dimensionality</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results_df.to_string(index<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\site-packages\tqdm\auto.py:21: TqdmWarning:
+<pre><code>&lt;&gt;:100: SyntaxWarning:
+
+invalid escape sequence '\C'
+
+&lt;&gt;:100: SyntaxWarning:
+
+invalid escape sequence '\C'
+
+C:\Users\Admin\AppData\Local\Temp\ipykernel_28452\2199718651.py:100: SyntaxWarning:
+
+invalid escape sequence '\C'
+
+C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\site-packages\tqdm\auto.py:21: TqdmWarning:
 
 IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
 </code></pre>
 </div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="unfolding-wines-2D_files/figure-html/cell-2-output-2.png" width="662" height="566" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Projecting to Prime 2D Space:   0%|          | 0/178 [00:00&lt;?, ?it/s]Projecting to Prime 2D Space: 100%|██████████| 178/178 [00:00&lt;00:00, 1908.15it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="unfolding-wines-2D_files/figure-html/cell-2-output-4.png" width="662" height="566" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Projecting to Prime 3D Space:   0%|          | 0/178 [00:00&lt;?, ?it/s]Projecting to Prime 3D Space:  89%|████████▉ | 159/178 [00:00&lt;00:00, 1575.35it/s]Projecting to Prime 3D Space: 100%|██████████| 178/178 [00:00&lt;00:00, 1413.38it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="unfolding-wines-2D_files/figure-html/cell-2-output-6.png" width="662" height="566" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Projecting to Prime 4D Space:   0%|          | 0/178 [00:00&lt;?, ?it/s]Projecting to Prime 4D Space: 100%|██████████| 178/178 [00:00&lt;00:00, 1922.99it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="unfolding-wines-2D_files/figure-html/cell-2-output-8.png" width="662" height="566" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Projecting to Prime 5D Space:   0%|          | 0/178 [00:00&lt;?, ?it/s]Projecting to Prime 5D Space:  89%|████████▉ | 159/178 [00:00&lt;00:00, 1578.01it/s]Projecting to Prime 5D Space: 100%|██████████| 178/178 [00:00&lt;00:00, 1551.08it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="unfolding-wines-2D_files/figure-html/cell-2-output-10.png" width="662" height="566" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Projecting to Prime 6D Space:   0%|          | 0/178 [00:00&lt;?, ?it/s]Projecting to Prime 6D Space:  92%|█████████▏| 164/178 [00:00&lt;00:00, 1628.67it/s]Projecting to Prime 6D Space: 100%|██████████| 178/178 [00:00&lt;00:00, 1616.59it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="unfolding-wines-2D_files/figure-html/cell-2-output-12.png" width="662" height="566" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Projecting to Prime 7D Space:   0%|          | 0/178 [00:00&lt;?, ?it/s]Projecting to Prime 7D Space:  96%|█████████▌| 171/178 [00:00&lt;00:00, 1698.79it/s]Projecting to Prime 7D Space: 100%|██████████| 178/178 [00:00&lt;00:00, 1700.75it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="unfolding-wines-2D_files/figure-html/cell-2-output-14.png" width="662" height="566" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Projecting to Prime 8D Space:   0%|          | 0/178 [00:00&lt;?, ?it/s]Projecting to Prime 8D Space:  96%|█████████▌| 171/178 [00:00&lt;00:00, 1696.34it/s]Projecting to Prime 8D Space: 100%|██████████| 178/178 [00:00&lt;00:00, 1682.34it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="unfolding-wines-2D_files/figure-html/cell-2-output-16.png" width="662" height="566" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Projecting to Prime 9D Space:   0%|          | 0/178 [00:00&lt;?, ?it/s]Projecting to Prime 9D Space:  95%|█████████▍| 169/178 [00:00&lt;00:00, 1680.09it/s]Projecting to Prime 9D Space: 100%|██████████| 178/178 [00:00&lt;00:00, 1598.86it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="unfolding-wines-2D_files/figure-html/cell-2-output-18.png" width="662" height="566" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Projecting to Prime 10D Space:   0%|          | 0/178 [00:00&lt;?, ?it/s]Projecting to Prime 10D Space:  87%|████████▋ | 154/178 [00:00&lt;00:00, 1536.33it/s]Projecting to Prime 10D Space: 100%|██████████| 178/178 [00:00&lt;00:00, 1534.82it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="unfolding-wines-2D_files/figure-html/cell-2-output-20.png" width="662" height="566" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Projecting to Prime 11D Space:   0%|          | 0/178 [00:00&lt;?, ?it/s]Projecting to Prime 11D Space:  74%|███████▍  | 132/178 [00:00&lt;00:00, 1319.26it/s]Projecting to Prime 11D Space: 100%|██████████| 178/178 [00:00&lt;00:00, 1362.37it/s]</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="unfolding-wines-2D_files/figure-html/cell-2-output-22.png" width="662" height="566" class="figure-img"></p>
-</figure>
-</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>\Clustering Performance vs. Feature Space Dimensionality
+
+Dimension  Features   ARI  Silhouette
+Raw (13D)        13 0.897       0.285
+ Prime 2D        26 0.830       0.656
+ Prime 3D        39 0.830       0.684
+ Prime 4D        52 0.845       0.657
+ Prime 5D        65 0.894       0.678
+ Prime 6D        78 0.814       0.708
+ Prime 7D        91 0.830       0.662
+ Prime 8D       104 0.845       0.664
+ Prime 9D       117 0.845       0.674
+Prime 10D       130 0.830       0.672
+Prime 11D       143 0.911       0.667</code></pre>
 </div>
 </div>
 

@@ -3,6 +3,25 @@ title: "Portfolio"
 format: html
 page-layout: full
 ---
+## Experiments
+
+::: {.project-box}
+<div class="project-img-wrapper">
+  ![](images/unfolding-wines-thumb.jpg){.project-img}
+</div>
+
+<div class="project-text">
+
+<div class="project-title">Experimenting with Prime Numbers</div>
+
+<div class="project-desc">What if Prime Numbers are not random and live in their own "prime space"? In this project we explore how classic wines dataset looks like in 2D-11D prime space. How well can we separate wines? Can it improve our clustering quality?</div>
+
+<div class="project-link">[Unfolding Wines (2D) →](reports/unfolding-wines-2D.qmd)</div>
+<div class="project-link">[Unfolding Wines (3D) →](reports/unfolding-wines-3D.qmd)</div>
+<div class="project-link">[Unfolding Wines (Clustering Quality) →](reports/unfolding-wines-clustering-quality.qmd)</div>
+</div>
+:::
+
 
 ## Machine Learning and Modelling
 
@@ -55,23 +74,7 @@ page-layout: full
 :::
 
 
-## Experiments
-::: {.project-box}
-<div class="project-img-wrapper">
-  ![](images/unfolding-wines-thumb.jpg){.project-img}
-</div>
-
-<div class="project-text">
-
-<div class="project-title">Experimenting with Prime Numbers</div>
-
-<div class="project-desc">What if Prime Numbers are not Random and live in their own "prime space"? In this project we explore how classic wines dataset looks like in 2D-11D prime space. How well can we separate wines?</div>
-
-<div class="project-link">[Unfolding Wines (2D) →](reports/unfolding-wines-2D.qmd)</div>
-<div class="project-link">[Unfolding Wines (3D) →](reports/unfolding-wines-3D.qmd)</div>
-</div>
-:::
-
+## More Machine Learning and Modelling
 
 ::: {.project-box}
 <div class="project-img-wrapper">
@@ -197,7 +200,6 @@ page-layout: full
 ---
 
 ## Bots and automation
-
 
 ::: {.project-box}
 <div class="project-img-wrapper">
